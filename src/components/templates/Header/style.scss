@@ -8,15 +8,16 @@
 
   .c-header__banner {
     background: url('../../../assets/img/background.png');
-    background-color: #8D1B3D;
-    opacity: 0.9;
-    background-blend-mode: soft-light;
-    background-position: top;
     background-repeat: no-repeat;
+    background-position: top;
+    background-size: 100%;
+    background-color: #8D1B3D;
+    background-blend-mode: soft-light;
+    opacity: 0.9;
     text-align: center;
+
     .u-container .c-header__logo {
       padding: 120px 0;
     }
   }
-
 }
