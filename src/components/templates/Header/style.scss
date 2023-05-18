@@ -1,0 +1,22 @@
+.c-header {
+  .c-header__menu {
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 26px 0;
+  }
+
+  .c-header__banner {
+    background: url('../../../assets/img/background.png');
+    background-color: #8D1B3D;
+    opacity: 0.9;
+    background-blend-mode: soft-light;
+    background-position: top;
+    background-repeat: no-repeat;
+    text-align: center;
+    .u-container .c-header__logo {
+      padding: 120px 0;
+    }
+  }
+
+}
