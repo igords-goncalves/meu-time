@@ -10,12 +10,16 @@
     background: url('../../../assets/img/background.png');
     background-repeat: no-repeat;
     background-position: top;
-    background-size: 100%;
+    background-size: cover;
+
     background-color: #8D1B3D;
     background-blend-mode: soft-light;
     opacity: 0.9;
     text-align: center;
 
+    .c-header__logo {
+      width: 100%;
+    }
     .u-container .c-header__logo {
       padding: 120px 0;
     }
