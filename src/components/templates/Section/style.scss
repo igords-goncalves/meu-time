@@ -1,0 +1,19 @@
+.c-section {
+  text-align: center;
+  padding: 70px 0;
+
+  .c-section__text {
+    	display: flex;
+      align-items: baseline;
+      text-align: center;
+  }
+
+  .c-section__paragraph {
+    font-size: 1.375em;
+
+    .u-strong {
+      font-weight: bolder;
+      color: #8D1B3D;
+    }
+  }
+}
