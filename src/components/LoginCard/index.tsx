@@ -1,6 +1,7 @@
 import { Button } from '../common/Button';
 import logoLogin from '../../../public/logo-login.svg';
 import './style.scss';
+import { useApi } from '../../hooks/useApi';
 
 const buttonStyle = {
   fontSize: '1.5em',
@@ -8,6 +9,14 @@ const buttonStyle = {
 };
 
 export const LoginCard = () => {
+  const api = useApi();
+
+  const requestData = async () => {
+    const data = await api.login();
+    console.log(data.response.account);
+    return data;
+  };
+
   return (
     <div className="c-logincard">
       <img
@@ -26,11 +35,7 @@ export const LoginCard = () => {
         />
         <span className="u-iserror">Aqui existe um erro.</span>
       </div>
-      <Button
-        label="ENTRAR"
-        onClick={() => console.log('login')}
-        style={buttonStyle}
-      />
+      <Button label="ENTRAR" onClick={requestData} style={buttonStyle} />
       <p className="c-logincard__text">ou</p>
       <a
         className="c-logincard__link"
