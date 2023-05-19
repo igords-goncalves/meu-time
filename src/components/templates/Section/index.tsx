@@ -1,4 +1,5 @@
 import warming from '../../../assets/img/icon-warming.svg';
+import { LoginCard } from '../../LoginCard';
 import './style.scss';
 
 export const Section = () => {
@@ -6,12 +7,20 @@ export const Section = () => {
     <section className="c-section">
       <div className="u-container">
         <div className="c-section__login">
-          <h1>Login Card</h1>
+          <LoginCard />
         </div>
         <div className="c-section__text">
           <img src={warming} alt="" className="c-section__img" />
           <p className="c-section__paragraph">
-            Para efetuar o login você deve criar uma conta em API-Football
+            Para efetuar o login você deve criar uma conta em{' '}
+            <a
+              className="c-logincard__link"
+              target="_blank"
+              href="https://dashboard.api-football.com/register"
+              rel="noreferrer"
+            >
+              api-football
+            </a>{' '}
             antes.{' '}
             <span className="u-strong">
               Após criar a conta você receberá uma chave de autenticação,
