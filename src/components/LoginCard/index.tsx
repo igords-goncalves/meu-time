@@ -17,9 +17,11 @@ export const LoginCard = () => {
       />
       <hr className="c-logincard__divider" />
       <div className="c-logincard__form">
+        <label className="c-logincard__label">Chave</label>
         <input
           className="c-logincard__input"
           type="password"
+          placeholder="Digite sua chave aqui"
           onChange={e => console.log(e.target.value)}
         />
         <span className="u-iserror">Aqui existe um erro.</span>
