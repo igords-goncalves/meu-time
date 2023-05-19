@@ -1,0 +1,48 @@
+.c-logincard {
+  background-color: #FFF2F2;
+  padding: 55px 85px;
+  margin-bottom: 80px;
+  width: 100%;
+  border-radius: 6px;
+
+  .c-logincard__img {
+    padding-bottom: 28px;
+  }
+
+  .c-logincard__divider {
+    border: 1px solid #BABABA;
+    opacity: 0.4;
+    outline: none;
+  }
+
+  .c-logincard__form {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding: 48px 0 48px 0;
+
+    .c-logincard__input {
+      background-color: #fff;
+      border: 1px solid #BABABA;
+      border-radius: 6px;
+
+      width: 100%;
+
+      padding: 16px 38px;
+      font-size: 22px;
+    }
+
+    .u-iserror {
+      display: none;
+      color: red;
+      font-size: 18px;
+      font-weight: 500;
+      padding-top: 8px;
+    }
+  }
+  .c-logincard__text, .c-logincard__link {
+    font-size: 1.125em;
+    font-weight: 600;
+    padding: 25px 0;
+  }
+}
