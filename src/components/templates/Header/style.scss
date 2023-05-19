@@ -19,10 +19,17 @@
     text-align: center;
 
     .c-header__logo {
-      width: 70%;
+      width: 50%;
     }
     .u-container .c-header__logo {
-      padding: 120px 0;
+      padding: 120px 0 60px 0;
+    }
+
+    .c-header__text {
+      font-size: 2.5em;
+      font-weight: 600;
+      color: #fff;
+      padding-bottom: 120px;
     }
   }
 }

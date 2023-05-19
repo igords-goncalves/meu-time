@@ -22,6 +22,10 @@ export const Header = () => {
             alt="Logomarca meu time"
             className="c-header__logo"
           />
+          <p className="c-header__text">
+            Informações sobre ligas, times, temporadas, estatísticas e jogadores
+            tudo em um só lugar.
+          </p>
         </div>
       </div>
     </header>
