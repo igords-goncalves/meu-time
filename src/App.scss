@@ -16,3 +16,6 @@ body {
   grid-template-rows: auto auto auto;
 }
 
+*:not(a) {
+  color: #3C3939;
+}
