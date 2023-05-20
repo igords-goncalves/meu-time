@@ -5,7 +5,7 @@ import './style.scss';
 import logoLogin from '../../../public/logo-login.svg';
 import { Button } from '../common/Button';
 import { useApi } from '../../hooks/useApi';
-import { notify } from '../../utils/notify';
+import { success, err } from '../../utils/notify';
 
 interface ApiKeyProps {
   apiKey: any;
@@ -20,10 +20,14 @@ const LoginCard = ({ apiKey }: ApiKeyProps): JSX.Element => {
   const api = useApi();
 
   const requestData = async () => {
-    const data = await api.login();
-    notify(data);
-    console.log(data.response.account);
-    return data;
+    try {
+      const data = await api.login();
+      success(data);
+      return data;
+    } catch (error) {
+      err();
+      return error;
+    }
   };
 
   return (
@@ -68,7 +72,6 @@ const mapStateToProps = (state: any) => {
 const mapDispatchToProps = (dispatch: any) => {
   return {
     apiKey(value: string) {
-      console.log(value);
       const action = getApiKey(value);
       dispatch(action);
     },
