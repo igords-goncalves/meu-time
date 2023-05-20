@@ -35,7 +35,7 @@
   ],
   "rules": {
     "prettier/prettier": "error",
-    "react-refresh/only-export-components": "warn",
+    "react-refresh/only-export-components": "off",
     "prefer-arrow-callback": "error",
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
