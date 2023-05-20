@@ -19,14 +19,14 @@ const LoginCard = ({ apiKey }: ApiKeyProps): JSX.Element => {
 
   const api = useApi();
 
-  const requestData = async () => {
+  const handleLogin = async () => {
     try {
-      const data = await api.login();
+      const data: object = await api.login();
       success(data);
       return data;
     } catch (error) {
-      err();
-      return error;
+      err(error);
+      throw new Error();
     }
   };
 
@@ -49,7 +49,7 @@ const LoginCard = ({ apiKey }: ApiKeyProps): JSX.Element => {
 
         <span className="u-iserror">Aqui existe um erro.</span>
       </div>
-      <Button label="ENTRAR" onClick={requestData} style={buttonStyle} />
+      <Button label="ENTRAR" onClick={handleLogin} style={buttonStyle} />
       <p className="c-logincard__text">ou</p>
       <a
         className="c-logincard__link"
