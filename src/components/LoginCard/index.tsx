@@ -5,7 +5,7 @@ import './style.scss';
 import logoLogin from '../../../public/logo-login.svg';
 import { Button } from '../common/Button';
 import { useApi } from '../../hooks/useApi';
-import { success, err } from '../../utils/notify';
+import { handleLogin } from './utils/hanfleLogin';
 
 interface ApiKeyProps {
   apiKey: any;
@@ -18,17 +18,6 @@ const LoginCard = ({ apiKey }: ApiKeyProps): JSX.Element => {
   };
 
   const api = useApi();
-
-  const handleLogin = async () => {
-    try {
-      const data: object = await api.login();
-      success(data);
-      return data;
-    } catch (error) {
-      err(error);
-      throw new Error();
-    }
-  };
 
   return (
     <div className="c-logincard">
@@ -49,7 +38,11 @@ const LoginCard = ({ apiKey }: ApiKeyProps): JSX.Element => {
 
         <span className="u-iserror">Aqui existe um erro.</span>
       </div>
-      <Button label="ENTRAR" onClick={handleLogin} style={buttonStyle} />
+      <Button
+        label="ENTRAR"
+        onClick={() => handleLogin(api)}
+        style={buttonStyle}
+      />
       <p className="c-logincard__text">ou</p>
       <a
         className="c-logincard__link"
@@ -77,5 +70,4 @@ const mapDispatchToProps = (dispatch: any) => {
     },
   };
 };
-
 export default connect(mapStateToProps, mapDispatchToProps)(LoginCard);
