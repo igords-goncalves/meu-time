@@ -1,17 +1,21 @@
+import { useSelector } from 'react-redux';
 import { createAxiosInstance } from '../../core/services/api';
 
-const axiosInstaces = createAxiosInstance();
+export const useApi = () => {
+  const apiKey = useSelector((state: any) => state.value.apiKey);
 
-export const useApi = () => ({
-  login: async () => {
-    const res = await axiosInstaces.api.get('/status');
-    return res.data;
-  },
+  const axiosInstaces = createAxiosInstance(apiKey);
+  return {
+    login: async () => {
+      const res = await axiosInstaces.api.get('/status');
+      return res.data;
+    },
 
-  // fr = france, br = brasil
-  getFlags: async (countryCode: string) => {
-    const url = `/flags/${countryCode}.svg`;
-    const res = await axiosInstaces.apiImage(url);
-    return res;
-  },
-});
+    // fr = france, br = brasil
+    getFlags: async (countryCode: string) => {
+      const url = `/flags/${countryCode}.svg`;
+      const res = await axiosInstaces.apiImage(url);
+      return res;
+    },
+  };
+};
