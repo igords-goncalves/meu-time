@@ -10,9 +10,10 @@ export const success = (data: any) => {
   );
 };
 
-export const err = () => {
+export const err = (error: any) => {
   toast.error(
-    'Desculpe algo saiu errado verifique sua chave de acesso e tente novamente',
+    `Desculpe algo saiu errado verifique sua chave de acesso e tente novamente.
+    ${error}`,
     {
       position: 'top-right',
       theme: 'light',
