@@ -1,5 +1,5 @@
 import warming from '../../../assets/img/icon-warming.svg';
-import { LoginCard } from '../../LoginCard';
+import LoginCard from '../../LoginCard';
 import './style.scss';
 
 export const Section = () => {
