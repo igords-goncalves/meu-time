@@ -1,11 +1,17 @@
+import { connect } from 'react-redux';
+import { getApiKey } from '../../redux/actions/apiKey';
+
 import './style.scss';
 import logoLogin from '../../../public/logo-login.svg';
-
 import { Button } from '../common/Button';
 import { useApi } from '../../hooks/useApi';
 import { notify } from '../../utils/notify';
 
-export const LoginCard = () => {
+interface ApiKeyProps {
+  apiKey: any;
+}
+
+const LoginCard = ({ apiKey }: ApiKeyProps): JSX.Element => {
   const buttonStyle = {
     fontSize: '1.5em',
     padding: '16px 100px',
@@ -34,7 +40,7 @@ export const LoginCard = () => {
           className="c-logincard__input"
           type="password"
           placeholder="Digite sua chave aqui"
-          onChange={e => console.log(e.target.value)}
+          onChange={e => apiKey(e.target.value)}
         />
 
         <span className="u-iserror">Aqui existe um erro.</span>
@@ -52,3 +58,21 @@ export const LoginCard = () => {
     </div>
   );
 };
+
+const mapStateToProps = (state: any) => {
+  return {
+    apiKey: state.value.apiKey,
+  };
+};
+
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    apiKey(value: string) {
+      console.log(value);
+      const action = getApiKey(value);
+      dispatch(action);
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginCard);
