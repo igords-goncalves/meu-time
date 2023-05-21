@@ -1,8 +1,8 @@
 import { Button } from '../../common/Button';
 
 import './style.scss';
-import logoName from '../../../../public/logo-name-small.svg';
-import logoFullBig from '../../../../public/logo-full-big.svg';
+import logoName from '../../../assets/img/logo-name-small.svg';
+import logoFullBig from '../../../assets/img/logo-full-big.svg';
 
 export const Header = () => {
   return (

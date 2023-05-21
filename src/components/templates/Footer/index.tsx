@@ -1,5 +1,5 @@
 import './style.scss';
-import logoMedium from '../../../../public/logo-full-medium.svg';
+import logoMedium from '../../../assets/img/logo-full-medium.svg';
 
 export const Footer = () => {
   return (

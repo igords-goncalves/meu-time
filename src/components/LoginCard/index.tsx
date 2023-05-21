@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { getApiKey } from '../../redux/actions/apiKey';
 
 import './style.scss';
-import logoLogin from '../../../public/logo-login.svg';
+import logoLogin from '../../assets/img/logo-login.svg';
 import { Button } from '../common/Button';
 import { useApi } from '../../hooks/useApi';
 import { handleLogin } from './utils/hanfleLogin';
