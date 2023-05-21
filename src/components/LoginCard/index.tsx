@@ -6,6 +6,7 @@ import logoLogin from '../../../public/logo-login.svg';
 import { Button } from '../common/Button';
 import { useApi } from '../../hooks/useApi';
 import { handleLogin } from './utils/hanfleLogin';
+import { useNavigate } from 'react-router';
 
 interface ApiKeyProps {
   apiKey: any;
@@ -18,6 +19,12 @@ const LoginCard = ({ apiKey }: ApiKeyProps): JSX.Element => {
   };
 
   const api = useApi();
+  const navigate = useNavigate();
+
+  const handleClick = async () => {
+    const userData = await handleLogin(api);
+    if (userData) navigate('./home');
+  };
 
   return (
     <div className="c-logincard">
@@ -38,11 +45,7 @@ const LoginCard = ({ apiKey }: ApiKeyProps): JSX.Element => {
 
         <span className="u-iserror">Aqui existe um erro.</span>
       </div>
-      <Button
-        label="ENTRAR"
-        onClick={() => handleLogin(api)}
-        style={buttonStyle}
-      />
+      <Button label="ENTRAR" onClick={handleClick} style={buttonStyle} />
       <p className="c-logincard__text">ou</p>
       <a
         className="c-logincard__link"
