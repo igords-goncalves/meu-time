@@ -1,13 +1,31 @@
-import { Button } from '../common/Button';
-import logoLogin from '../../../public/logo-login.svg';
+import { connect } from 'react-redux';
+import { getApiKey } from '../../redux/actions/apiKey';
+
 import './style.scss';
+import logoLogin from '../../assets/img/logo-login.svg';
+import { Button } from '../common/Button';
+import { useApi } from '../../hooks/useApi';
+import { handleLogin } from './utils/hanfleLogin';
+import { useNavigate } from 'react-router';
 
-const buttonStyle = {
-  fontSize: '1.5em',
-  padding: '16px 100px',
-};
+interface ApiKeyProps {
+  apiKey: any;
+}
 
-export const LoginCard = () => {
+const LoginCard = ({ apiKey }: ApiKeyProps): JSX.Element => {
+  const buttonStyle = {
+    fontSize: '1.5em',
+    padding: '16px 100px',
+  };
+
+  const api = useApi();
+  const navigate = useNavigate();
+
+  const handleClick = async () => {
+    const userData = await handleLogin(api);
+    if (userData) navigate('./home');
+  };
+
   return (
     <div className="c-logincard">
       <img
@@ -22,15 +40,12 @@ export const LoginCard = () => {
           className="c-logincard__input"
           type="password"
           placeholder="Digite sua chave aqui"
-          onChange={e => console.log(e.target.value)}
+          onChange={e => apiKey(e.target.value)}
         />
+
         <span className="u-iserror">Aqui existe um erro.</span>
       </div>
-      <Button
-        label="ENTRAR"
-        onClick={() => console.log('login')}
-        style={buttonStyle}
-      />
+      <Button label="ENTRAR" onClick={handleClick} style={buttonStyle} />
       <p className="c-logincard__text">ou</p>
       <a
         className="c-logincard__link"
@@ -43,3 +58,19 @@ export const LoginCard = () => {
     </div>
   );
 };
+
+const mapStateToProps = (state: any) => {
+  return {
+    apiKey: state.value.apiKey,
+  };
+};
+
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    apiKey(value: string) {
+      const action = getApiKey(value);
+      dispatch(action);
+    },
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(LoginCard);
