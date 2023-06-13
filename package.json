@@ -8,7 +8,8 @@
     "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "cz": "git cz"
+    "cz": "git cz",
+    "cypress:open":"cypres open"
   },
   "dependencies": {
     "axios": "^1.4.0",
@@ -29,6 +30,7 @@
     "@typescript-eslint/parser": "^5.57.1",
     "@vitejs/plugin-react": "^4.0.0",
     "commitizen": "^4.3.0",
+    "cypress": "^12.12.0",
     "eslint": "^8.38.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
