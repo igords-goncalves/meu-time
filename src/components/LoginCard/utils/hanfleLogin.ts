@@ -9,6 +9,6 @@ export const handleLogin = async (api: any) => {
     err(
       `Desculpe algo saiu errado, verifique sua chave de acesso e tente novamente.`,
     );
-    throw new Error();
+    throw new Error('Erro no login');
   }
 };
