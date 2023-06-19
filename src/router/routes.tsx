@@ -1,14 +1,14 @@
 import { Routes, Route } from 'react-router-dom';
 import { Login } from '../pages/Login';
 import { Home } from '../pages/Home';
-import { Team } from '../pages/Team';
+import { Dashboard } from '../pages/Dashboard';
 
 export const MainRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<Login />} />
       <Route path="/home" element={<Home />} />
-      <Route path="/team" element={<Team />} />
+      <Route path="/dashboard" element={<Dashboard />} />
     </Routes>
   );
 };
