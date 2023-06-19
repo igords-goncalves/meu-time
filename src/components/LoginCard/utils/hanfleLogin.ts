@@ -6,6 +6,9 @@ export const handleLogin = async (api: any) => {
     success(`Login efetuado com sucesso ${data.response.account.firstname}! `);
     return data;
   } catch (error) {
+    const errorMessage: HTMLElement | HTMLSpanElement | any =
+      document.querySelector('.u-iserror');
+    errorMessage.style.display = 'block';
     err(
       `Desculpe algo saiu errado, verifique sua chave de acesso e tente novamente.`,
     );
