@@ -39,11 +39,13 @@ const LoginCard = ({ apiKey }: ApiKeyProps): JSX.Element => {
         <input
           className="c-logincard__input"
           type="password"
-          placeholder="Digite sua chave aqui"
+          placeholder="ex: 1234567890"
           onChange={e => apiKey(e.target.value)}
         />
 
-        <span className="u-iserror">Aqui existe um erro.</span>
+        <span className="u-iserror">
+          Chave inválida ou inexistente. Tente novamente.
+        </span>
       </div>
       <Button label="ENTRAR" onClick={handleClick} style={buttonStyle} />
       <p className="c-logincard__text">ou</p>
