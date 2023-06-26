@@ -3,7 +3,7 @@ import './style.scss';
 
 import flag from '../../assets/img/flag-test.svg';
 
-export const Countries = () => {
+export const Slide = () => {
   return (
     <div className="card__wrapper">
       <Card flag={flag} country="Estados Unidos" />
