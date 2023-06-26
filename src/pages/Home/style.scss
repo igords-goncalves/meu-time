@@ -1,0 +1,41 @@
+.section__countries,
+.section__leagues {
+  padding: 74px 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .section__wrapper {
+    margin: 0 0 56px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .section__title {
+      padding: 12px 0;
+      text-transform: uppercase;
+      font-size: 2.5em;
+      font-weight: 700;
+      text-align: center;
+      color: #1f1e1e;
+    }
+    .section__text {
+      padding: 0 140px;
+      color: #8d1b3d;
+      font-size: 1.25em;
+      font-weight: 400;
+    }
+  }
+  & > .u-container {
+    width: 100%;
+  }
+}
+
+hr {
+  margin: 0 auto;
+  width: 80%;
+  text-align: center;
+  border-top: 1px solid #bababa;
+}
