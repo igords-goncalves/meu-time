@@ -2,7 +2,6 @@ import axios, { AxiosInstance } from 'axios';
 
 interface CustomAxiosInstance {
   api: AxiosInstance;
-  apiImage: AxiosInstance;
 }
 
 export const createAxiosInstance = (apiKey?: string): CustomAxiosInstance => {
@@ -13,15 +12,7 @@ export const createAxiosInstance = (apiKey?: string): CustomAxiosInstance => {
     },
   });
 
-  const imageInstance = axios.create({
-    baseURL: 'https://media.api-sports.io',
-    headers: {
-      'x-apisports-key': apiKey,
-    },
-  });
-
   return {
     api: dataInstance,
-    apiImage: imageInstance,
   };
 };
