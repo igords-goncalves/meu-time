@@ -13,6 +13,7 @@ export const Home = () => {
   async function handleCountries() {
     const res = await api.getCountries();
     const country = res.response;
+    console.log(country);
     return country;
   }
   handleCountries();
