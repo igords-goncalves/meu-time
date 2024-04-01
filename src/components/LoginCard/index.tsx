@@ -5,7 +5,7 @@ import './style.scss';
 import logoLogin from '../../assets/img/logo-login.svg';
 import { Button } from '../common/Button';
 import { useApi } from '../../hooks/useApi';
-import { handleLogin } from './utils/hanfleLogin';
+import { handleLogin } from './utils/handleLogin';
 import { useNavigate } from 'react-router';
 
 interface ApiKeyProps {
@@ -47,7 +47,9 @@ const LoginCard = ({ apiKey }: ApiKeyProps): JSX.Element => {
           Chave inválida ou inexistente. Tente novamente.
         </span>
       </div>
-      <Button label="ENTRAR" onClick={handleClick} style={buttonStyle} />
+      <Button onClick={handleClick} style={buttonStyle}>
+        ENTRAR
+      </Button>
       <p className="c-logincard__text">ou</p>
       <a
         className="c-logincard__link"

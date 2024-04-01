@@ -1,15 +1,15 @@
 import './style.scss';
 
-interface PropsButton {
-  label: string;
+type PropsButton = {
   onClick: () => void;
   style?: object;
-}
+  children: React.ReactNode;
+};
 
-export const Button = ({ onClick, label, style }: PropsButton) => {
+export const Button = ({ onClick, style, children }: PropsButton) => {
   return (
     <button className="c-button" onClick={onClick} style={style}>
-      {label}
+      {children}
     </button>
   );
 };

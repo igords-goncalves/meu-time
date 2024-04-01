@@ -1,10 +1,10 @@
 import { Footer } from '../../components/templates/Footer';
-import { Header } from '../../components/templates/Header';
+import { NavBar } from '../../components/templates/NavBar';
 
 export const Dashboard = () => {
   return (
     <>
-      <Header />
+      <NavBar />
       <h1>Team</h1>
       <Footer />
     </>

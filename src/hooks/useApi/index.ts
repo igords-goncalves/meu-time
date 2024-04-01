@@ -11,11 +11,10 @@ export const useApi = () => {
       return res.data;
     },
 
-    // fr = france, br = brasil
-    getFlags: async (countryCode: string) => {
-      const url = `/flags/${countryCode}.svg`;
-      const res = await axiosInstaces.apiImage(url);
-      return res;
+    // A api que retorna os países não é a mesma que retorna as bandeiras
+    getCountries: async () => {
+      const res = await axiosInstaces.api.get('/countries');
+      return res.data;
     },
   };
 };
