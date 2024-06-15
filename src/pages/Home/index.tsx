@@ -1,23 +1,10 @@
-import { useEffect, useState } from 'react';
 import { Slide } from '../../components/Slide';
 import { Leagues } from '../../components/Leagues';
-import { Footer } from '../../components/templates/Footer';
-import { NavBar } from '../../components/templates/NavBar';
+import { Footer } from '../../components/__templates__/Footer';
+import { NavBar } from '../../components/__templates__/NavBar';
 import './style.scss';
 
-import { useApi } from '../../hooks/useApi';
-
 export const Home = () => {
-  const api = useApi();
-
-  async function handleCountries() {
-    const res = await api.getCountries();
-    const country = res.response;
-    console.log(country);
-    return country;
-  }
-  handleCountries();
-
   return (
     <>
       <NavBar />
