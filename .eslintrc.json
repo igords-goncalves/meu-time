@@ -27,18 +27,13 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": [
-    "react",
-    "react-refresh",
-    "@typescript-eslint",
-    "prettier"
-  ],
+  "plugins": ["react", "react-refresh", "@typescript-eslint", "prettier"],
   "rules": {
     "prettier/prettier": "error",
     "react-refresh/only-export-components": "off",
-    "prefer-arrow-callback": "error",
-    "react/prop-types": "off",
+    "prefer-arrow-callback": "warn", // require using arrow functions for callbacks
+    "react/prop-types": "off", // requires that all React components have their props described in a PropTypes declaration
     "react/react-in-jsx-scope": "off",
-    "@typescript-eslint/no-explicit-any": "off"
+    "@typescript-eslint/no-explicit-any": "off" // disallow usage of the any type, change it to warn later
   }
 }
