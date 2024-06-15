@@ -1,14 +1,15 @@
+import { ReactNode } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { Login } from '../pages/Login';
-import { Home } from '../pages/Home';
-import { Dashboard } from '../pages/Dashboard';
 
-export const MainRoutes = () => {
+type MainRouteProps = {
+  path: string;
+  children: ReactNode;
+};
+
+export const MainRoute = ({ children, path }: MainRouteProps) => {
   return (
     <Routes>
-      <Route path="/" element={<Login />} />
-      <Route path="/home" element={<Home />} />
-      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path={path} element={children} />
     </Routes>
   );
 };
