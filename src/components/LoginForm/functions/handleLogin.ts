@@ -1,4 +1,4 @@
-import { err, success } from '../../../utils/toatsFunctions';
+import { erro, success } from '../../../utils/toatsFunctions';
 
 export const handleLogin = async (api: any) => {
   try {
@@ -9,7 +9,7 @@ export const handleLogin = async (api: any) => {
     const errorMessage: HTMLElement | HTMLSpanElement | any =
       document.querySelector('.u-iserror');
     errorMessage.style.display = 'block';
-    err(
+    erro(
       `Desculpe algo saiu errado, verifique sua chave de acesso e tente novamente.`,
     );
     throw new Error('Erro no login');

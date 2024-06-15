@@ -1,0 +1,9 @@
+.c-grid {
+  display: grid;
+  grid-template-columns: auto; // 1 column
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+    'header'
+    'main'
+    'footer';
+}
