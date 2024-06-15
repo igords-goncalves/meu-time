@@ -1,13 +1,17 @@
 {
-  "editor.formatOnSave": false,
-  "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true
-  },
-  "material-icon-theme.folders.associations": {
-      "redux": "redux-store",
-      "state": "constant",
-      "initialState": "redux-selector",
-      "BackTopBtn": "react-components",
-      "Card": "react-components",
-  }
+	"editor.formatOnSave": true,
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": "explicit"
+	},
+	"material-icon-theme.folders.associations": {
+		"redux": "redux-store",
+		"state": "constant",
+		"initialState": "redux-selector",
+		"BackTopBtn": "react-components",
+		"Card": "react-components"
+	},
+	"material-icon-theme.files.associations": {
+		".czrc": "git"
+	},
+	"window.zoomLevel": 0
 }
