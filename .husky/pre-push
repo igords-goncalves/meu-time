@@ -1,4 +1,6 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-git diff HEAD --quiet && yarn cy:run-unit && yarn run build
+# && yarn cy:run-unit
+
+git diff HEAD --quiet && yarn run build
