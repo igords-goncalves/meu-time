@@ -9,13 +9,6 @@ body {
   margin: 0 auto;
 }
 
-.c-grid {
-  // Base layout
-  display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: auto auto auto;
-}
-
 *:not(a) {
   color: #3C3939;
 }
