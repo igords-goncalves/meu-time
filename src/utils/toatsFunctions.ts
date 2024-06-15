@@ -7,7 +7,7 @@ export const success = (message: string) => {
   });
 };
 
-export const err = (message: string) => {
+export const erro = (message: string) => {
   toast.error(message, {
     position: 'top-right',
     theme: 'light',
