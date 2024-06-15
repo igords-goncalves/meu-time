@@ -1,5 +1,4 @@
 .c-header {
-
   .c-header__nav {
     display: flex;
     justify-content: space-between;
@@ -36,12 +35,12 @@
   }
 
   .c-header__banner {
-    background: url('../../../assets/img/background.png');
+    background: url('../../assets/img/background.png');
     background-repeat: no-repeat;
     background-position: top;
     background-size: cover;
 
-    background-color: #8D1B3D;
+    background-color: #8d1b3d;
     background-blend-mode: soft-light;
     opacity: 0.9;
     text-align: center;
