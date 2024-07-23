@@ -1,15 +1,20 @@
 .c-logincard__input {
-   background-color: #fff;
-   border: 1px solid #BABABA;
-   border-radius: 6px;
-   width: 100%;
-   padding: 16px 38px;
-   font-size: 22px;
+  background-color: transparent;
+  border: 1px solid #bebebe;
+  border-radius: 8px;
+  height: fit-content;
+  width: 100%;
+  padding: 16px 10px;
+  font-size: 1rem;
+
+  &::placeholder {
+    color: #bebebe;
+    font-size: 0.8rem;
+  }
 }
 
 .c-logincard__label {
-   font-size: 1.125em;
-   padding-bottom: 4px;
-   font-weight: 500;
+  font-size: 0.8rem;
+  padding-bottom: 4px;
+  font-weight: normal;
 }
-
