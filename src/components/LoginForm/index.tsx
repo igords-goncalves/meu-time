@@ -6,55 +6,20 @@ import { Button } from '../__common__/Button';
 import { Error as ErrorComponent } from '../__common__/Error';
 import { Link } from '../__common__/Link';
 import { useApi } from '../../hooks/useApi';
-import { useNavigate } from 'react-router';
 import { Form } from '../__common__/Form';
-import { useAuth } from '../../core/context/AuthContext';
-import { erro, success } from '../../utils/toatsFunctions';
 import { useEffect, useRef } from 'react';
+import useLogin from '../../hooks/useLogin';
 
-interface ApiKeyProps {
-  apiKey: any;
-}
+const LoginForm = ({ apiKey }: any): JSX.Element => {
+  const api = useApi();
+  const { handleSubmit } = useLogin(api);
 
-const LoginForm = ({ apiKey }: ApiKeyProps): JSX.Element => {
   const inputRef: any = useRef();
-
   useEffect(() => {
     if (inputRef.current) {
       inputRef.current.focus();
     }
   }, []);
-
-  const api = useApi();
-  const navigate = useNavigate();
-  const { login } = useAuth();
-
-  const handleLogin = async (api: any) => {
-    try {
-      const data = await api.login();
-      success(
-        `Login efetuado com sucesso ${data.response.account.firstname}! `,
-      );
-      return data;
-    } catch (error) {
-      const errorMessage: HTMLElement | HTMLSpanElement | any =
-        document.querySelector('.u-iserror');
-      errorMessage.style.display = 'block';
-      erro(
-        `Desculpe algo saiu errado, verifique sua chave de acesso e tente novamente.`,
-      );
-      throw new Error('Erro no login');
-    }
-  };
-
-  const handleSubmit = async () => {
-    const userData = await handleLogin(api);
-
-    if (userData) {
-      login(userData.response);
-    }
-    if (userData) navigate('./home');
-  };
 
   return (
     <div className="c-logincard">
