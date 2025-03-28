@@ -3,7 +3,6 @@ import { createAxiosInstance } from '../../core/services/api';
 
 export const useApi = () => {
   const apiKey = useSelector((state: any) => state.value.apiKey);
-  console.log(apiKey);
 
   const axiosInstaces = createAxiosInstance(apiKey);
   return {

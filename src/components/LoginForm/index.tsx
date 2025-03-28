@@ -4,12 +4,12 @@ import { getApiKey } from '../../redux/actions/apiKey';
 import './style.scss';
 import { Button } from '../__common__/Button';
 import { Error } from '../__common__/Error';
-import { Input } from '../__common__/Input';
 import { Link } from '../__common__/Link';
 import { useApi } from '../../hooks/useApi';
 import { handleLogin } from './functions/handleLogin';
 import { useNavigate } from 'react-router';
 import { Form } from '../__common__/Form';
+import { useState } from 'react';
 
 interface ApiKeyProps {
   apiKey: any;
@@ -19,8 +19,13 @@ const LoginForm = ({ apiKey }: ApiKeyProps): JSX.Element => {
   const api = useApi();
   const navigate = useNavigate();
 
+  const [user, setUser] = useState(null);
+
   const handleSubmit = async () => {
     const userData = await handleLogin(api);
+    if (userData) {
+      setUser(userData);
+    }
     if (userData) navigate('./home');
   };
 
