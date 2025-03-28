@@ -31,13 +31,20 @@ const LoginForm = ({ apiKey }: ApiKeyProps): JSX.Element => {
           <p className="c-login_title">Meu Time</p>
         </div>
         <div className="c-logincard__form">
-          <Input
+          {/* <Input
             type="password"
             placeholder="Insira sua chave de acesso aqui..."
             onChange={apiKey}
           >
             Chave de acesso
-          </Input>
+          </Input> */}
+          <label className="c-logincard__label">Chave</label>
+          <input
+            className="c-logincard__input"
+            type="password"
+            placeholder="ex: 1234567890"
+            onChange={e => apiKey(e.target.value)}
+          />
           <Error> Chave inválida ou inexistente. Tente novamente. </Error>
         </div>
         <Button type="submit">ENTRAR</Button>
