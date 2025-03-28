@@ -16,16 +16,10 @@ interface ApiKeyProps {
 }
 
 const LoginForm = ({ apiKey }: ApiKeyProps): JSX.Element => {
-  const buttonStyle = {
-    fontSize: '1.2rem',
-    padding: '16px',
-  };
-
   const api = useApi();
   const navigate = useNavigate();
 
   const handleSubmit = async () => {
-    console.log('Passei aqui ...');
     const userData = await handleLogin(api);
     if (userData) navigate('./home');
   };
@@ -33,6 +27,9 @@ const LoginForm = ({ apiKey }: ApiKeyProps): JSX.Element => {
   return (
     <div className="c-logincard">
       <Form onSubmit={handleSubmit}>
+        <div>
+          <p className="c-login_title">Meu Time</p>
+        </div>
         <div className="c-logincard__form">
           <Input
             type="password"
@@ -43,9 +40,7 @@ const LoginForm = ({ apiKey }: ApiKeyProps): JSX.Element => {
           </Input>
           <Error> Chave inválida ou inexistente. Tente novamente. </Error>
         </div>
-        <Button type="submit" style={buttonStyle}>
-          ENTRAR
-        </Button>
+        <Button type="submit">ENTRAR</Button>
       </Form>
 
       <p className="c-logincard__text">ou</p>

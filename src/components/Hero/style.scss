@@ -15,18 +15,10 @@
     font-size: 0.8rem;
     font-weight: normal;
     color: #f9fafb;
-
-    @media (max-height: 768px) {
-      display: none;
-    }
   }
 
   .c-hero__logo-banner {
     margin-top: 64px;
     max-width: 470px;
-
-    @media (max-height: 768px) {
-      display: none;
-    }
   }
 }

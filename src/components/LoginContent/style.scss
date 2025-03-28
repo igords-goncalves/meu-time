@@ -13,25 +13,21 @@
     transform: translate(-50%, -37.5%);
 
     width: 100%;
-
-    @media (max-width: 1366px) {
-      padding: 0 16px;
-    }
   }
 
   .c-section__paragraph {
-    margin-top: 72px;
-    font-size: 1rem;
-    max-width: 80%;
+    margin-top: 50px;
+    font-size: 0.8rem;
+    max-width: 60%;
 
     font-weight: normal;
-    color: #555;
+    color: #666;
     text-align: center;
     text-wrap: pretty;
 
     .u-strong {
       font-weight: normal;
-      color: #8d1b3d;
+      color: #666;
     }
   }
 }

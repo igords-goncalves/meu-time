@@ -1,11 +1,11 @@
 import './style.scss';
-import logoFullBig from '../../assets/img/logo-full-big.svg';
+// import logoFullBig from '../../assets/img/logo-full-big.svg';
 
 export const Hero = () => {
   return (
     <header className="c-hero">
       <div className="u-container">
-        <img
+        {/* <img
           src={logoFullBig}
           alt="Logomarca meu time"
           className="c-hero__logo-banner"
@@ -13,7 +13,7 @@ export const Hero = () => {
         <p className="c-hero__text">
           Informações sobre ligas, times, temporadas, estatísticas e jogadores
           tudo em um só lugar.
-        </p>
+        </p> */}
       </div>
     </header>
   );

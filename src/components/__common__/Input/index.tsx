@@ -3,7 +3,7 @@ import './style.scss';
 
 type InputProps = {
   children: ReactNode;
-  onChange: () => void;
+  onChange: any;
   type: string;
   placeholder: string;
 };
