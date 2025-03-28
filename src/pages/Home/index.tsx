@@ -3,8 +3,14 @@ import { Leagues } from '../../components/Leagues';
 import { Footer } from '../../components/__templates__/Footer';
 import { NavBar } from '../../components/__templates__/NavBar';
 import './style.scss';
+import { useAuth } from '../../core/context/AuthContext';
 
 export const Home = () => {
+  const { user } = useAuth();
+
+  // Fazer um get country aqui com useEffect
+
+  console.log(user);
   return (
     <>
       <NavBar />

@@ -9,7 +9,7 @@ import { useApi } from '../../hooks/useApi';
 import { handleLogin } from './functions/handleLogin';
 import { useNavigate } from 'react-router';
 import { Form } from '../__common__/Form';
-import { useState } from 'react';
+import { useAuth } from '../../core/context/AuthContext';
 
 interface ApiKeyProps {
   apiKey: any;
@@ -18,13 +18,13 @@ interface ApiKeyProps {
 const LoginForm = ({ apiKey }: ApiKeyProps): JSX.Element => {
   const api = useApi();
   const navigate = useNavigate();
-
-  const [user, setUser] = useState(null);
+  const { login } = useAuth();
 
   const handleSubmit = async () => {
     const userData = await handleLogin(api);
+
     if (userData) {
-      setUser(userData);
+      login(userData.response);
     }
     if (userData) navigate('./home');
   };
@@ -43,7 +43,7 @@ const LoginForm = ({ apiKey }: ApiKeyProps): JSX.Element => {
           >
             Chave de acesso
           </Input> */}
-          <label className="c-logincard__label">Chave</label>
+          <label className="c-logincard__label">Chave de Acesso</label>
           <input
             className="c-logincard__input"
             type="password"
