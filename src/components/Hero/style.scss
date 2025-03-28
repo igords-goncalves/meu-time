@@ -1,55 +1,24 @@
-.c-header {
-  .c-header__nav {
-    display: flex;
-    justify-content: space-between;
-    padding: 48px 0 120px 0;
+.c-hero {
+  height: 50vh;
 
-    .c-header__menu {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+  background: url('../../assets/img/background.png');
+  background-repeat: no-repeat;
+  background-position: top right;
+  background-size: cover;
 
-      .c-header__item {
-        padding: 0 30px;
+  background-color: #8d1b3d;
+  background-blend-mode: soft-light;
+  text-align: center;
 
-        list-style: none;
-
-        .c-header__link {
-          text-decoration: none;
-          color: #fff;
-          font-weight: 600;
-          font-size: 1.75em;
-          &:hover {
-            color: #bababa;
-          }
-        }
-      }
-    }
-    & > img {
-      width: 18%;
-    }
+  .c-hero__text {
+    margin-top: 23.75px;
+    font-size: 0.8rem;
+    font-weight: normal;
+    color: #f9fafb;
   }
 
-  .c-header__logo-banner {
-    width: 50%;
-  }
-
-  .c-header__banner {
-    background: url('../../assets/img/background.png');
-    background-repeat: no-repeat;
-    background-position: top;
-    background-size: cover;
-
-    background-color: #8d1b3d;
-    background-blend-mode: soft-light;
-    opacity: 0.9;
-    text-align: center;
-
-    .c-header__text {
-      font-size: 2.5em;
-      font-weight: 300;
-      color: #fff;
-      padding: 48px 0 120px 0;
-    }
+  .c-hero__logo-banner {
+    margin-top: 64px;
+    max-width: 470px;
   }
 }

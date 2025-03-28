@@ -1,13 +1,16 @@
 .c-button {
-  padding: 14px 60px;
+  padding: 12px 0;
   color: #fff;
-  background-color: #8D1B3D;
+  background-color: #8d1b3d;
+  width: 100%;
+  height: fit-content;
 
-  border-radius: 6px;
+  border-radius: 8px;
   border: none;
 
-  font-size: 1.4em;
+  font-size: 1rem;
   font-weight: 600;
+  cursor: pointer;
 
   &:hover {
     background-color: #530f23;
