@@ -1,12 +1,104 @@
 .c-header {
-  background-color: #1F1E1E;
+  background: #f4f4f4;
+  padding: 1rem;
 
-  .c-header__nav {
-    padding: 48px 0;
+  &__nav {
+    display: flex;
+    justify-content: end;
   }
 
-  .c-header__item > button {
-    background-color: #1f1e1e00;
-    border: none;
+  &__menu {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+  }
+
+  &__item {
+    position: relative;
+
+    &:hover .c-header__dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    color: #444;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.2s ease-in-out;
+    min-width: fit-content;
+    padding: 0.5rem 1rem;
+    list-style: none;
+    z-index: 9999;
+
+    .c-header__email {
+      font-size: 0.8rem;
+      padding: 1rem 0.8rem;
+    }
+
+    .email {
+      border-bottom: 1px solid #e9e9e9;
+      padding: 1rem 0rem;
+      font-weight: 600;
+    }
+
+    .c-header__plans {
+      border-bottom: 1px solid #e9e9e9;
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem 0;
+
+      &-status {
+        background-color: lime;
+        color: white;
+        padding: 2px 3px;
+        border-radius: 12px;
+        font-size: 0.6rem;
+      }
+    }
+
+    li {
+      padding: 0.2rem 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      a {
+        padding: 0.3rem;
+        min-width: 96px;
+        text-decoration: none;
+        font-weight: 400;
+        font-size: 0.8rem;
+        color: #333;
+        border-radius: 4px;
+      }
+      &:hover {
+        background: #f4f4f4;
+      }
+    }
   }
 }
