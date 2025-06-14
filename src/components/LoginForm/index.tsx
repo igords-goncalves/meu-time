@@ -1,33 +1,49 @@
-import { connect } from 'react-redux';
-import { getApiKey } from '../../redux/actions/apiKey';
-
 import './style.scss';
 import { Button } from '../__common__/Button';
-import { Error } from '../__common__/Error';
+import { Error as ErrorComponent } from '../__common__/Error';
 import { Link } from '../__common__/Link';
 import { useApi } from '../../hooks/useApi';
-import { handleLogin } from './functions/handleLogin';
-import { useNavigate } from 'react-router';
 import { Form } from '../__common__/Form';
-import { useAuth } from '../../core/context/AuthContext';
+import { useEffect, useRef } from 'react';
+import { success, erro } from '../../utils/toatsFunctions';
+import { useNavigate } from 'react-router-dom';
+import { useAuthContext } from '../../hooks/useAuthContext';
 
-interface ApiKeyProps {
-  apiKey: any;
-}
-
-const LoginForm = ({ apiKey }: ApiKeyProps): JSX.Element => {
-  const api = useApi();
+export const LoginForm = (): JSX.Element => {
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const api = useApi();
+
+  const { login, setApiKey, apiKey } = useAuthContext();
 
   const handleSubmit = async () => {
-    const userData = await handleLogin(api);
+    try {
+      const data = await api.login();
 
-    if (userData) {
-      login(userData.response);
+      if (data && apiKey) {
+        login(apiKey, data.response);
+        navigate('./home');
+      }
+      success(
+        `Login efetuado com sucesso ${data.response.account.firstname}! `,
+      );
+      return data;
+    } catch (error) {
+      const errorMessage: HTMLElement | HTMLSpanElement | any =
+        document.querySelector('.u-iserror');
+      errorMessage.style.display = 'block';
+      erro(
+        `Desculpe algo saiu errado, verifique sua chave de acesso e tente novamente.`,
+      );
+      throw new Error('Erro no login');
     }
-    if (userData) navigate('./home');
   };
+
+  const inputRef: any = useRef();
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, []);
 
   return (
     <div className="c-logincard">
@@ -36,21 +52,18 @@ const LoginForm = ({ apiKey }: ApiKeyProps): JSX.Element => {
           <p className="c-login_title">Meu Time</p>
         </div>
         <div className="c-logincard__form">
-          {/* <Input
-            type="password"
-            placeholder="Insira sua chave de acesso aqui..."
-            onChange={apiKey}
-          >
-            Chave de acesso
-          </Input> */}
           <label className="c-logincard__label">Chave de Acesso</label>
           <input
+            ref={inputRef}
             className="c-logincard__input"
             type="password"
             placeholder="ex: 1234567890"
-            onChange={e => apiKey(e.target.value)}
+            onChange={e => setApiKey(e.target.value)}
           />
-          <Error> Chave inválida ou inexistente. Tente novamente. </Error>
+          <ErrorComponent>
+            {' '}
+            Chave inválida ou inexistente. Tente novamente.{' '}
+          </ErrorComponent>
         </div>
         <Button type="submit">ENTRAR</Button>
       </Form>
@@ -66,19 +79,3 @@ const LoginForm = ({ apiKey }: ApiKeyProps): JSX.Element => {
     </div>
   );
 };
-
-const mapStateToProps = (state: any) => {
-  return {
-    apiKey: state.value.apiKey,
-  };
-};
-
-const mapDispatchToProps = (dispatch: any) => {
-  return {
-    apiKey(value: string) {
-      const action = getApiKey(value);
-      dispatch(action);
-    },
-  };
-};
-export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

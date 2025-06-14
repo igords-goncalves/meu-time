@@ -14,15 +14,16 @@
     "cy:run-unit": "cypress run --component"
   },
   "dependencies": {
+    "@types/react-slick": "^0.23.13",
     "axios": "^1.4.0",
     "formik": "^2.2.9",
     "fuse.js": "^6.6.2",
+    "lucide-react": "^0.485.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-redux": "^8.0.5",
     "react-router-dom": "^6.11.1",
+    "react-slick": "^0.30.3",
     "react-toastify": "^9.1.3",
-    "redux": "^4.2.1",
     "sass": "^1.62.1"
   },
   "devDependencies": {

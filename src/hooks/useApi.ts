@@ -1,19 +1,19 @@
-import { useSelector } from 'react-redux';
 import { createAxiosInstance } from '../core/services/createAxiosInstanc';
+import { useAuthContext } from './useAuthContext';
 
 export const useApi = () => {
-  const apiKey = useSelector((state: any) => state.value.apiKey);
+  const { apiKey } = useAuthContext();
 
-  const axiosInstaces = createAxiosInstance(apiKey);
+  const axiosInstances = () => createAxiosInstance(apiKey || undefined);
+
   return {
     login: async () => {
-      const res = await axiosInstaces.api.get('/status');
+      const res = await axiosInstances().api.get('/status');
       return res.data;
     },
 
-    // A api que retorna os países não é a mesma que retorna as bandeiras
     getCountries: async () => {
-      const res = await axiosInstaces.api.get('/countries');
+      const res = await axiosInstances().api.get('/countries');
       return res.data;
     },
   };

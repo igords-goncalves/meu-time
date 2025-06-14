@@ -1,12 +1,25 @@
+import Slider from 'react-slick';
 import { Card } from './Cards';
 import './style.scss';
 
-import flag from '../../assets/img/flag-test.svg';
+export const Slide = ({ countries }: { countries: any }) => {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+  };
 
-export const Slide = () => {
   return (
-    <div className="card__wrapper">
-      <Card flag={flag} country="Estados Unidos" />
-    </div>
+    <Slider className="slide" {...settings}>
+      {countries?.map((group: any, index: number) => (
+        <div key={index} className="slide-group">
+          {group?.map((country: any, i: number) => (
+            <Card key={i} country={country} />
+          ))}
+        </div>
+      ))}
+    </Slider>
   );
 };

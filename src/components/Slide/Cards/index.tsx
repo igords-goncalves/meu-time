@@ -1,16 +1,12 @@
 import './style.scss';
+import flagTest from '../../../assets/img/flag-test.svg';
 
-interface CardProps {
-  flag: any;
-  country: string;
-}
-
-export const Card = ({ flag, country }: CardProps) => {
+export const Card = ({ country }: { country: any }) => {
   return (
     <div className="card">
       <div className="card__item">
-        <img src={flag} alt="Bandeira" />
-        <h3>{country}</h3>
+        <img src={country.flag || flagTest} alt="Bandeira" />
+        <h3>{country.name}</h3>
       </div>
     </div>
   );
