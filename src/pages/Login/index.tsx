@@ -1,7 +1,7 @@
 import { Link } from '../../components/__common__/Link';
-import Main from '../../components/__templates__/Main';
+import { Main } from '../../components/__templates__/Main';
 import { Hero } from '../../components/Hero';
-import LoginForm from '../../components/LoginForm';
+import { LoginForm } from '../../components/LoginForm';
 import './style.scss';
 
 export const Login = () => {

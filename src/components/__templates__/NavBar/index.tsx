@@ -1,10 +1,12 @@
 import './style.scss';
-import { useAuth } from '../../../core/context/AuthContext';
 import { CircleUserRound, House, LogOut } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { useAuthContext } from '../../../hooks/useAuthContext';
 
 export const NavBar = () => {
-  const { user, logout } = useAuth();
+  const { user, logout } = useAuthContext();
+  console.log(user);
+
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -20,28 +22,28 @@ export const NavBar = () => {
             <div className="c-header__button">
               <p className="">
                 {user
-                  ? `${user?.account.firstname} ${user?.account.lastname}`
+                  ? `${user?.account?.firstname} ${user?.account?.lastname}`
                   : 'Usuário'}
               </p>
               <CircleUserRound size={28} color="#444" />
             </div>
             <div className="c-header__dropdown">
               <div className="c-header__email">
-                <p className="email">{user?.account.email}</p>
+                <p className="email">{user?.account?.email}</p>
                 <div className="c-header__plans">
                   <p>
-                    <strong>Assinatura</strong>: {user?.subscription.plan}
+                    <strong>Assinatura</strong>: {user?.subscription?.plan}
                   </p>
                   <p className="c-header__plans-status">
-                    {user?.subscription.active ? 'active' : ''}
+                    {user?.subscription?.active ? 'active' : ''}
                   </p>
                 </div>
                 <div className="c-header__plans">
                   <p>
-                    <strong>Consultas:</strong> {user?.requests.current}
+                    <strong>Consultas:</strong> {user?.requests?.current}
                   </p>
                   <p>
-                    <strong>Limite:</strong> {user?.requests.limit_day}
+                    <strong>Limite:</strong> {user?.requests?.limit_day}
                   </p>
                 </div>
               </div>

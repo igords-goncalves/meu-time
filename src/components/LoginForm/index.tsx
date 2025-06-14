@@ -1,6 +1,3 @@
-import { connect } from 'react-redux';
-import { getApiKey } from '../../redux/actions/apiKey';
-
 import './style.scss';
 import { Button } from '../__common__/Button';
 import { Error as ErrorComponent } from '../__common__/Error';
@@ -8,11 +5,38 @@ import { Link } from '../__common__/Link';
 import { useApi } from '../../hooks/useApi';
 import { Form } from '../__common__/Form';
 import { useEffect, useRef } from 'react';
-import useLogin from '../../hooks/useLogin';
+import { success, erro } from '../../utils/toatsFunctions';
+import { useNavigate } from 'react-router-dom';
+import { useAuthContext } from '../../hooks/useAuthContext';
 
-const LoginForm = ({ apiKey }: any): JSX.Element => {
+export const LoginForm = (): JSX.Element => {
+  const navigate = useNavigate();
   const api = useApi();
-  const { handleSubmit } = useLogin(api);
+
+  const { login, setApiKey, apiKey } = useAuthContext();
+
+  const handleSubmit = async () => {
+    try {
+      const data = await api.login();
+
+      if (data && apiKey) {
+        login(apiKey, data.response);
+        navigate('./home');
+      }
+      success(
+        `Login efetuado com sucesso ${data.response.account.firstname}! `,
+      );
+      return data;
+    } catch (error) {
+      const errorMessage: HTMLElement | HTMLSpanElement | any =
+        document.querySelector('.u-iserror');
+      errorMessage.style.display = 'block';
+      erro(
+        `Desculpe algo saiu errado, verifique sua chave de acesso e tente novamente.`,
+      );
+      throw new Error('Erro no login');
+    }
+  };
 
   const inputRef: any = useRef();
   useEffect(() => {
@@ -34,7 +58,7 @@ const LoginForm = ({ apiKey }: any): JSX.Element => {
             className="c-logincard__input"
             type="password"
             placeholder="ex: 1234567890"
-            onChange={e => apiKey(e.target.value)}
+            onChange={e => setApiKey(e.target.value)}
           />
           <ErrorComponent>
             {' '}
@@ -55,19 +79,3 @@ const LoginForm = ({ apiKey }: any): JSX.Element => {
     </div>
   );
 };
-
-const mapStateToProps = (state: any) => {
-  return {
-    apiKey: state.value.apiKey,
-  };
-};
-
-const mapDispatchToProps = (dispatch: any) => {
-  return {
-    apiKey(value: string) {
-      const action = getApiKey(value);
-      dispatch(action);
-    },
-  };
-};
-export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

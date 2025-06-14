@@ -7,7 +7,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { Login } from './pages/Login';
 import { Dashboard } from './pages/Dashboard';
 import { Home } from './pages/Home';
-import { AuthProvider } from './core/context/AuthContext';
+import { AuthProvider } from './core/context/AuthProvider';
 
 function App() {
   return (

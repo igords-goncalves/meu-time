@@ -3,15 +3,18 @@ import { Leagues } from '../../components/Leagues';
 import { Footer } from '../../components/__templates__/Footer';
 import { NavBar } from '../../components/__templates__/NavBar';
 import './style.scss';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useApi } from '../../hooks/useApi';
 
 export const Home = () => {
   const [countries, setCountries] = useState<any[][] | undefined>();
+  const hasFetched = useRef(false);
 
   const api = useApi();
 
   useEffect(() => {
+    if (hasFetched.current) return;
+
     const fetchData = async () => {
       try {
         const data = await api.getCountries();
@@ -31,6 +34,7 @@ export const Home = () => {
       }
     };
     fetchData();
+    hasFetched.current = true;
   }, [api]);
 
   return (
