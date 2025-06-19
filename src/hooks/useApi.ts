@@ -16,5 +16,10 @@ export const useApi = () => {
       const res = await axiosInstances().api.get('/countries');
       return res.data;
     },
+
+    getLeagues: async (country: string | null) => {
+      const res = await axiosInstances().api.get(`/leagues?country=${country}`);
+      return res.data;
+    },
   };
 };

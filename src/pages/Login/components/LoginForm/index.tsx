@@ -1,18 +1,21 @@
 import './style.scss';
-import { Button } from '../__common__/Button';
-import { Error as ErrorComponent } from '../__common__/Error';
-import { Link } from '../__common__/Link';
-import { useApi } from '../../hooks/useApi';
-import { Form } from '../__common__/Form';
-import { useEffect, useRef } from 'react';
-import { success, erro } from '../../utils/toatsFunctions';
 import { useNavigate } from 'react-router-dom';
-import { useAuthContext } from '../../hooks/useAuthContext';
+import { useApi } from '../../../../hooks/useApi';
+import { useAuthContext } from '../../../../hooks/useAuthContext';
+import { success, erro } from '../../../../utils/toatsFunctions';
+import { useFocusInput } from '../../../../hooks/useFocusInput';
+import {
+  Button,
+  Form,
+  Link,
+  Error as ErrorComponent,
+} from '../../../../components/__common__';
 
 export const LoginForm = (): JSX.Element => {
   const navigate = useNavigate();
   const api = useApi();
 
+  const { inputRef } = useFocusInput();
   const { login, setApiKey, apiKey } = useAuthContext();
 
   const handleSubmit = async () => {
@@ -37,13 +40,6 @@ export const LoginForm = (): JSX.Element => {
       throw new Error('Erro no login');
     }
   };
-
-  const inputRef: any = useRef();
-  useEffect(() => {
-    if (inputRef.current) {
-      inputRef.current.focus();
-    }
-  }, []);
 
   return (
     <div className="c-logincard">

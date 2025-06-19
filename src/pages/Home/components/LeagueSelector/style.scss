@@ -1,0 +1,126 @@
+.league {
+  background-color: #fff;
+  border: 1px solid #f4f4f4;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 18px 15px;
+  border-radius: 6px;
+  margin: 10px 0;
+  width: 320px;
+
+  .league_logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 26px;
+  }
+
+  .league_wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .league_country--wrapper {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+
+    img {
+      width: 19px;
+    }
+    .league_country {
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+    }
+  }
+
+  .league_title--wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+
+    .league_title {
+      font-size: 32px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+    }
+
+    .status {
+      display: flex;
+      width: fit-content;
+      height: fit-content;
+      padding: 2px;
+      justify-content: center;
+      align-items: center;
+
+      border-radius: 50px;
+      background: #ff0000;
+
+      color: #fff;
+
+      font-size: 8px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+    }
+  }
+
+  .league_season--wrapper {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 16px;
+
+    .season_title {
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+    }
+
+    .period_season {
+      color: #adadad;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+    }
+  }
+}
+
+.select_wrapper {
+  position: relative;
+
+  .calendar_icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+
+  select {
+    background-color: transparent;
+    border: 1px solid #bebebe;
+    color: #bebebe;
+    border-radius: 8px;
+    height: fit-content;
+    width: 100%;
+    padding: 12px 8px;
+    font-size: 1rem;
+    appearance: none;
+
+    &::placeholder {
+      color: #bebebe;
+      font-size: 0.8rem;
+    }
+
+    option {
+      color: #bebebe;
+    }
+  }
+}

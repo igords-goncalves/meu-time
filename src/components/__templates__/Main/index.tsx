@@ -1,3 +1,4 @@
+import './style.scss';
 import { PropsWithChildren } from 'react';
 
 type MainProps = PropsWithChildren;
