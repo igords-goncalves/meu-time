@@ -1,0 +1,23 @@
+.slide {
+  padding: 12px 12px;
+}
+
+.dots_wrapper {
+  padding: 10px;
+
+  .dots {
+    margin: 0;
+  }
+}
+
+.custom_paging {
+  color: #9c9c9c;
+  width: 30px;
+  font-size: 12px;
+
+  &:hover {
+    color: #8d1b3d;
+    scale: 1.4;
+    transition: 0.4s;
+  }
+}

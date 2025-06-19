@@ -20,8 +20,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
   }, []);
 
-  console.log(user);
-
   const login = (apiKey: string, user: any) => {
     sessionStorage.setItem('apiKey', apiKey);
     sessionStorage.setItem('user', JSON.stringify(user));

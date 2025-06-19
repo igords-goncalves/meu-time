@@ -34,6 +34,7 @@
     "prefer-arrow-callback": "warn", // require using arrow functions for callbacks
     "react/prop-types": "off", // requires that all React components have their props described in a PropTypes declaration
     "react/react-in-jsx-scope": "off",
-    "@typescript-eslint/no-explicit-any": "off" // disallow usage of the any type, change it to warn later
+    "@typescript-eslint/no-explicit-any": "off", // disallow usage of the any type, change it to warn later
+    "@typescript-eslint/no-unused-vars": "off"
   }
 }

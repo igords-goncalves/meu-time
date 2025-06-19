@@ -5,8 +5,6 @@ import { useAuthContext } from '../../../hooks/useAuthContext';
 
 export const NavBar = () => {
   const { user, logout } = useAuthContext();
-  console.log(user);
-
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -49,11 +47,11 @@ export const NavBar = () => {
               </div>
               <ul>
                 <li>
-                  <House size={18} />
+                  <House size={14} />
                   <a href="#">Home</a>
                 </li>
                 <li>
-                  <LogOut size={18} color="red" />
+                  <LogOut size={14} color="red" />
                   <a href="#" style={{ color: 'red' }} onClick={handleLogout}>
                     Sair
                   </a>

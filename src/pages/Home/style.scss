@@ -1,6 +1,10 @@
+.section__countries > div {
+  margin-top: 82px;
+}
+
 .section__countries,
 .section__leagues {
-  margin: 32px 0;
+  margin: 38px 0;
 
   display: flex;
   flex-direction: column;
@@ -24,8 +28,9 @@
     .section__text {
       padding: 0 140px;
       color: #888;
-      font-size: 1em;
+      font-size: 0.9em;
       font-weight: 400;
+      text-align: center;
     }
   }
   & > .u-container {
@@ -43,4 +48,13 @@ hr {
 .slider {
   max-width: 1024px;
   margin: 0 auto;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  font-size: 1.2rem;
+  color: #666;
 }
