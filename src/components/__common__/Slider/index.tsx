@@ -1,22 +1,31 @@
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, Children } from 'react';
 import ReactSlick from 'react-slick';
 import './style.scss';
 
-type SliderProps = PropsWithChildren;
+type SliderProps = PropsWithChildren<{
+  isInfinite?: boolean;
+  isSlideToShow?: boolean;
+}>;
 
-export const Slider = ({ children }: SliderProps) => {
+export const Slider = ({
+  children,
+  isInfinite,
+  isSlideToShow,
+}: SliderProps) => {
+  const childrenCount = Children.count(children);
+
   const settings = {
     dots: true,
-    infinite: true,
+    infinite: isInfinite ? childrenCount > 3 : false,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: isSlideToShow ? Math.min(3, childrenCount) : 3,
     slidesToScroll: 3,
     appendDots: (dots: any) => (
       <div className="dots_wrapper">
         <ul className="dots"> {dots} </ul>
       </div>
     ),
-    customPaging: (i: number) => <div className="custom_paging">{i + 1}</div>,
+    customPaging: (i: number) => <p className="custom_paging">{i + 1}</p>,
   };
 
   return (

@@ -1,23 +1,29 @@
 import { Button } from '../../../../components/__common__';
 import './style.scss';
-import flagTest from '../../../../assets/img/flag-test.svg';
-import leagueTest from '../../../../assets/img/league-sample.png';
 import { Calendar } from 'lucide-react';
 
-export const LeagueSelector = () => {
+type LeagueSelectorProps = {
+  league?: any;
+};
+
+export const LeagueSelector = ({ league }: LeagueSelectorProps) => {
   return (
     <div className="league">
-      <div className="league_logo">
-        <img src={leagueTest} alt="logo liga" />
-      </div>
       <div className="league_wrapper">
-        <div className="league_country--wrapper">
-          <img src={flagTest} alt="Bandeira" />
-          <p className="league_country">Brazil</p>
+        <div className="league_logo_wrapper">
+          <img
+            src={league?.league?.logo}
+            alt="Logo da liga"
+            className="league_logo_img"
+          />
         </div>
         <div className="league_title--wrapper">
-          <h3 className="league_title">Brasileirão</h3>
+          <h3 className="league_title">{league?.league?.name}</h3>
           <span className="status">finalizado</span>
+        </div>
+        <div className="league_country--wrapper">
+          <img src={league?.country?.flag} className="flag" alt="Bandeira" />
+          <p className="league_country">{league?.country?.name}</p>
         </div>
         <div className="league_season--wrapper">
           <p className="season_title">Temporada</p>

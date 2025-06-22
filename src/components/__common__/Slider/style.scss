@@ -4,15 +4,10 @@
 
 .dots_wrapper {
   padding: 10px;
-
-  .dots {
-    margin: 0;
-  }
 }
 
 .custom_paging {
   color: #9c9c9c;
-  width: 30px;
   font-size: 12px;
 
   &:hover {
@@ -20,4 +15,17 @@
     scale: 1.4;
     transition: 0.4s;
   }
+}
+
+.slick-dots {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 90%;
 }
