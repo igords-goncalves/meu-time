@@ -1,27 +1,34 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Slider } from '../../../../components/__common__';
 import { LeagueSelector } from '../LeagueSelector';
 import { useCodeCountry } from '../../../../hooks/useCodeCountry';
+import { useApi } from '../../../../hooks/useApi';
 
 export const LeaguesSlide = () => {
-  const [league, setLeague] = useState<[] | null>([]);
-  console.log(league, setLeague);
+  const [leagues, setLeagues] = useState<[] | null>([]);
+  const api = useApi();
 
   const { code } = useCodeCountry();
 
-  console.log(code);
+  useEffect(() => {
+    async function featchLeagues() {
+      if (!code) return;
+
+      const data = await api.getLeagues(code);
+      const response = await data.response;
+      setLeagues(response);
+      return;
+    }
+
+    featchLeagues();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [code]);
 
   return (
-    <Slider>
-      <LeagueSelector />
-      <LeagueSelector />
-      <LeagueSelector />
-      <LeagueSelector />
-      <LeagueSelector />
-      <LeagueSelector />
-      <LeagueSelector />
-      <LeagueSelector />
-      <LeagueSelector />
+    <Slider isInfinite isSlideToShow>
+      {leagues?.map((league: any, index: number) => (
+        <LeagueSelector key={league.id} league={leagues[index]} />
+      ))}
     </Slider>
   );
 };
