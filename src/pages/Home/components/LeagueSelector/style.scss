@@ -1,106 +1,124 @@
 .league {
-  background-color: #fff;
-  border: 1px solid #f4f4f4;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 18px 15px;
-  border-radius: 6px;
-  margin: 10px 0;
-  width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-  .league_logo {
+  outline: 1px solid #f4f4f4;
+  outline-offset: -1px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  background-color: #fff;
+
+  width: 320px;
+  height: 460px;
+  margin: 22px auto;
+  padding: 18px 16px;
+
+  .league_logo_wrapper {
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 100%;
-    margin-bottom: 26px;
+
+    height: 100px;
+
+    .league_logo_img {
+      max-width: 100px;
+      max-height: 90px;
+      margin: 8px auto 8px auto;
+    }
   }
 
   .league_wrapper {
     display: flex;
     flex-direction: column;
-  }
+    width: 100%;
+    flex-grow: 1;
 
-  .league_country--wrapper {
-    display: flex;
-    align-items: baseline;
-    gap: 4px;
-
-    img {
-      width: 19px;
-    }
-    .league_country {
-      font-size: 12px;
-      font-style: normal;
-      font-weight: 500;
-      line-height: normal;
-    }
-  }
-
-  .league_title--wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 24px;
-
-    .league_title {
-      font-size: 32px;
-      font-style: normal;
-      font-weight: 600;
-      line-height: normal;
-    }
-
-    .status {
+    .league_country--wrapper {
       display: flex;
-      width: fit-content;
-      height: fit-content;
-      padding: 2px;
-      justify-content: center;
+      align-items: baseline;
+      padding: 12px 0;
+      gap: 4px;
+
+      .flag {
+        width: 19px;
+      }
+      .league_country {
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+      }
+    }
+
+    .league_title--wrapper {
+      display: flex;
       align-items: center;
+      justify-content: space-between;
+      flex: 1;
+      max-height: 100px;
 
-      border-radius: 50px;
-      background: #ff0000;
+      .league_title {
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+      }
 
-      color: #fff;
+      .status {
+        display: flex;
+        width: fit-content;
+        height: fit-content;
+        padding: 2px;
+        justify-content: center;
+        align-items: center;
 
-      font-size: 8px;
-      font-style: normal;
-      font-weight: 700;
-      line-height: normal;
+        border-radius: 50px;
+        background: #ff0000;
+
+        color: #fff;
+
+        font-size: 8px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+      }
+    }
+
+    .league_season--wrapper {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 16px;
+
+      .season_title {
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+      }
+
+      .period_season {
+        color: #adadad;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+      }
     }
   }
 
-  .league_season--wrapper {
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-    margin-bottom: 16px;
+  .select_wrapper {
+    position: relative;
 
-    .season_title {
-      font-size: 20px;
-      font-style: normal;
-      font-weight: 500;
-      line-height: normal;
+    .calendar_icon {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
     }
-
-    .period_season {
-      color: #adadad;
-      font-size: 12px;
-      font-style: normal;
-      font-weight: 500;
-      line-height: normal;
-    }
-  }
-}
-
-.select_wrapper {
-  position: relative;
-
-  .calendar_icon {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    pointer-events: none;
   }
 
   select {

@@ -8,7 +8,7 @@ export const CountrySelector = ({ country }: { country: Countries }) => {
 
   return (
     <div className="card">
-      <div className="card__item" onClick={() => setCode(country.code)}>
+      <div className="card__item" onClick={() => setCode(country.name)}>
         <img src={country.flag || flagTest} alt="Bandeira" />
         <h3>{country.name}</h3>
       </div>

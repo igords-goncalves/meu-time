@@ -38,8 +38,6 @@ export const useFetchCountres = () => {
     hasFetched.current = true;
   }, [api]);
 
-  console.log(countries);
-
   return {
     countries,
     limitError,
