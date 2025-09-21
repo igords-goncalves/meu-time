@@ -22,9 +22,10 @@ export const LoginForm = (): JSX.Element => {
     try {
       const data = await api.login();
 
+      // API key não pode ser null
       if (data && apiKey) {
         login(apiKey, data.response);
-        navigate('./home');
+        navigate('/home');
       }
       success(
         `Login efetuado com sucesso ${data.response.account.firstname}! `,
