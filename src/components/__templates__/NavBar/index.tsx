@@ -27,10 +27,17 @@ export const NavBar = () => {
             </div>
             <div className="c-header__dropdown">
               <div className="c-header__email">
-                <p className="email">{user?.account?.email}</p>
+                <p className="email">
+                  <strong>Usuário:</strong> {user?.account?.firstname}{' '}
+                  {user?.account?.lastname}
+                </p>
+                <p className="email">
+                  {' '}
+                  <strong>Email:</strong> {user?.account?.email}
+                </p>
                 <div className="c-header__plans">
                   <p>
-                    <strong>Assinatura</strong>: {user?.subscription?.plan}
+                    <strong>Plano</strong>: {user?.subscription?.plan}
                   </p>
                   <p className="c-header__plans-status">
                     {user?.subscription?.active ? 'active' : ''}
@@ -48,7 +55,7 @@ export const NavBar = () => {
               <ul>
                 <li>
                   <House size={14} />
-                  <a href="#">Home</a>
+                  <a href="/home">Home</a>
                 </li>
                 <li>
                   <LogOut size={14} color="red" />
