@@ -7,32 +7,29 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { Login } from './pages/Login';
 import { Dashboard } from './pages/Dashboard';
 import { Home } from './pages/Home';
-import { AuthProvider } from './core/context/AuthProvider';
-import { CountryProvider } from './core/context/CountryProvider';
-import { CodeCountryProvider } from './core/context/CodeCountryProvider';
+import { Provider } from './Providers/Provider';
+import { privateRoute } from './router/privateRoute';
+
+const ROUTES = [
+  { path: '/', component: Login },
+  { path: '/home', component: Home },
+  { path: '/dashboard', component: Dashboard },
+];
 
 function App() {
   return (
-    <AuthProvider>
-      <CountryProvider>
-        <CodeCountryProvider>
-          <Router>
-            <Grid>
-              <Route path="/">
-                <Login />
-              </Route>
-              <Route path="/home">
-                <Home />
-              </Route>
-              <Route path="/dashboard">
-                <Dashboard />
-              </Route>
-            </Grid>
-            <ToastContainer />
-          </Router>
-        </CodeCountryProvider>
-      </CountryProvider>
-    </AuthProvider>
+    <Provider>
+      <Router>
+        <Grid>
+          {ROUTES.map(route => (
+            <Route key={route.path} path={route.path}>
+              {privateRoute() ? <route.component /> : <Login />}
+            </Route>
+          ))}
+        </Grid>
+        <ToastContainer />
+      </Router>
+    </Provider>
   );
 }
 

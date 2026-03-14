@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
 import { Button } from '../../../../components/__common__';
+import { useLeaguesContext } from '../../../../hooks/useLeaguesContext';
+import { useSelectLeagues } from '../../../../hooks/useSelectLeaguests';
 import './style.scss';
 import { Calendar } from 'lucide-react';
 
@@ -8,21 +9,15 @@ type LeagueSelectorProps = {
 };
 
 export const LeagueSelector = ({ league }: LeagueSelectorProps) => {
-  const [selectedSeason, setSelectedSeason] = useState<any>(null);
+  const { handleSeasonChange, selectedSeason } = useSelectLeagues(league);
+  const { setSelectedLeague, setSelectedSeason } = useLeaguesContext();
 
-  useEffect(() => {
-    if (league?.seasons) {
-      const currentSeason = league.seasons.find(
-        (season: any) => season.current,
-      );
-      setSelectedSeason(currentSeason || league.seasons[0]);
-    }
-  }, [league]);
+  const handleViewTeams = () => {
+    setSelectedLeague(league.league.id);
+    setSelectedSeason(selectedSeason.year);
 
-  const handleSeasonChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const seasonYear = parseInt(event.target.value);
-    const season = league.seasons.find((s: any) => s.year === seasonYear);
-    setSelectedSeason(season);
+    console.log('Liga salva:', league.league.id);
+    console.log('Temporada salva:', selectedSeason.year);
   };
 
   return (
@@ -76,7 +71,9 @@ export const LeagueSelector = ({ league }: LeagueSelectorProps) => {
           <Calendar className="calendar_icon" color="#adadad" />
         </div>
         <hr />
-        <Button type={'button'}>Ver Times</Button>
+        <Button type={'button'} onClick={handleViewTeams}>
+          Ver Times
+        </Button>
       </div>
     </div>
   );

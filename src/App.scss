@@ -9,6 +9,41 @@ body {
   margin: 0 auto;
 }
 
+@mixin noise-overlay(
+  $opacity: 0.25,
+  $light: rgba(255, 255, 255, 0.1),
+  $dark: rgba(0, 0, 0, 0.12),
+  $size1: 3px,
+  $size2: 5px
+) {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+
+    background-image: radial-gradient($light 1px, rgba(255, 255, 255, 0) 1px),
+      radial-gradient($dark 1px, rgba(0, 0, 0, 0) 1px);
+    background-size: $size1 $size1, $size2 $size2;
+    background-position: 0 0, 2px 1px;
+    opacity: $opacity;
+    mix-blend-mode: overlay;
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.u-noise {
+  @include noise-overlay();
+}
+
 *:not(a) {
   color: #3c3939;
 }

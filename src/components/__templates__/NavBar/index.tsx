@@ -14,7 +14,7 @@ export const NavBar = () => {
 
   return (
     <header className="c-header">
-      <nav className="c-header__nav u-container">
+      <nav className="c-header__nav">
         <ul className="c-header__menu">
           <li className="c-header__item">
             <div className="c-header__button">

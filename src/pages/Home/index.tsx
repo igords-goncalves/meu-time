@@ -3,6 +3,7 @@ import { LeaguesSlide } from './components/LeaguesSlide';
 import { Footer } from '../../components/__templates__/Footer';
 import { NavBar } from '../../components/__templates__/NavBar';
 import './style.scss';
+import { TeamsTable } from './components/TeamsTable';
 
 export const Home = () => {
   return (
@@ -42,11 +43,11 @@ export const Home = () => {
           <div className="section__wrapper">
             <h2 className="section__title">Principais Times</h2>
             <p className="section__text">
-              Selecione um time da liga acima para ver todas as informações.
+              Clique em + detalhes de um time para ver todas mais informações.
             </p>
           </div>
           <div className="slider">
-            <div>Tabela de times presentes na liga</div>
+            <TeamsTable />
           </div>
         </div>
       </section>

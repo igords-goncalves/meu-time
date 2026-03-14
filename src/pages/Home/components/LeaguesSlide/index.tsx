@@ -1,11 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Slider } from '../../../../components/__common__';
 import { LeagueSelector } from '../LeagueSelector';
 import { useCodeCountry } from '../../../../hooks/useCodeCountry';
 import { useApi } from '../../../../hooks/useApi';
+import { useLeaguesContext } from '../../../../hooks/useLeaguesContext';
 
 export const LeaguesSlide = () => {
-  const [leagues, setLeagues] = useState<[] | null>([]);
+  const { leagues, setLeagues } = useLeaguesContext();
   const api = useApi();
 
   const { code } = useCodeCountry();
@@ -27,7 +28,7 @@ export const LeaguesSlide = () => {
   return (
     <Slider isInfinite isSlideToShow>
       {leagues?.map((league: any, index: number) => (
-        <LeagueSelector key={league.id} league={leagues[index]} />
+        <LeagueSelector key={`${league.id}-${index}`} league={leagues[index]} />
       ))}
     </Slider>
   );
