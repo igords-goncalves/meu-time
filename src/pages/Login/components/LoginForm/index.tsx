@@ -1,5 +1,7 @@
 import './style.scss';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Lock, LockOpen } from 'lucide-react';
 import { useApi } from '../../../../hooks/useApi';
 import { useAuthContext } from '../../../../hooks/useAuthContext';
 import { success, erro } from '../../../../utils/toatsFunctions';
@@ -17,14 +19,16 @@ export const LoginForm = (): JSX.Element => {
 
   const { inputRef } = useFocusInput();
   const { login, setApiKey, apiKey } = useAuthContext();
+  const [showKey, setShowKey] = useState(false);
 
   const handleSubmit = async () => {
     try {
       const data = await api.login();
 
+      // API key não pode ser null
       if (data && apiKey) {
         login(apiKey, data.response);
-        navigate('./home');
+        navigate('/home');
       }
       success(
         `Login efetuado com sucesso ${data.response.account.firstname}! `,
@@ -49,13 +53,26 @@ export const LoginForm = (): JSX.Element => {
         </div>
         <div className="c-logincard__form">
           <label className="c-logincard__label">Chave de Acesso</label>
-          <input
-            ref={inputRef}
-            className="c-logincard__input"
-            type="password"
-            placeholder="ex: 1234567890"
-            onChange={e => setApiKey(e.target.value)}
-          />
+          <div className="c-logincard__input-wrapper">
+            <input
+              ref={inputRef}
+              className="c-logincard__input"
+              type={showKey ? 'text' : 'password'}
+              placeholder="ex: 1234567890"
+              onChange={e => setApiKey(e.target.value)}
+            />
+            <button
+              type="button"
+              className="c-logincard__toggle-btn"
+              onClick={() => setShowKey(prev => !prev)}
+              aria-label={
+                showKey ? 'Ocultar chave de acesso' : 'Mostrar chave de acesso'
+              }
+              aria-pressed={showKey}
+            >
+              {showKey ? <LockOpen size={18} /> : <Lock size={18} />}
+            </button>
+          </div>
           <ErrorComponent>
             {' '}
             Chave inválida ou inexistente. Tente novamente.{' '}

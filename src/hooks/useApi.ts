@@ -21,5 +21,14 @@ export const useApi = () => {
       const res = await axiosInstances().api.get(`/leagues?country=${country}`);
       return res.data;
     },
+
+    getTeams: async (league: number | null, season: number | null) => {
+      if (!league || !season) return { response: [], errors: [] };
+
+      const res = await axiosInstances().api.get(
+        `/teams?league=${league}&season=${season}`,
+      );
+      return res.data;
+    },
   };
 };

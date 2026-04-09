@@ -1,6 +1,6 @@
 import './style.scss';
 import { CircleUserRound, House, LogOut } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../../hooks/useAuthContext';
 
 export const NavBar = () => {
@@ -14,7 +14,7 @@ export const NavBar = () => {
 
   return (
     <header className="c-header">
-      <nav className="c-header__nav u-container">
+      <nav className="c-header__nav">
         <ul className="c-header__menu">
           <li className="c-header__item">
             <div className="c-header__button">
@@ -27,10 +27,17 @@ export const NavBar = () => {
             </div>
             <div className="c-header__dropdown">
               <div className="c-header__email">
-                <p className="email">{user?.account?.email}</p>
+                <p className="email">
+                  <strong>Usuário:</strong> {user?.account?.firstname}{' '}
+                  {user?.account?.lastname}
+                </p>
+                <p className="email">
+                  {' '}
+                  <strong>Email:</strong> {user?.account?.email}
+                </p>
                 <div className="c-header__plans">
                   <p>
-                    <strong>Assinatura</strong>: {user?.subscription?.plan}
+                    <strong>Plano</strong>: {user?.subscription?.plan}
                   </p>
                   <p className="c-header__plans-status">
                     {user?.subscription?.active ? 'active' : ''}
@@ -48,7 +55,7 @@ export const NavBar = () => {
               <ul>
                 <li>
                   <House size={14} />
-                  <a href="#">Home</a>
+                  <Link to={'/home'}>Home</Link>
                 </li>
                 <li>
                   <LogOut size={14} color="red" />

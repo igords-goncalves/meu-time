@@ -3,5 +3,6 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
+  "prettier.tabWidth": 2,
   "window.zoomLevel": 0
 }

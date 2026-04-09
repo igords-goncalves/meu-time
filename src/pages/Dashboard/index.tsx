@@ -5,7 +5,6 @@ export const Dashboard = () => {
   return (
     <>
       <NavBar />
-      <NavBar />
       <h1>Team</h1>
       <Footer />
     </>

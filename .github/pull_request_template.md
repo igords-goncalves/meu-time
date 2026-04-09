@@ -1,8 +1,8 @@
-## Descrição
+## Description
 
 Add here a description about your Pull Request
 
-## Revisão
+## Review
 
 - [ ] It is a list of things to verify
 - [ ] ...
@@ -10,13 +10,13 @@ Add here a description about your Pull Request
 
 ## Pre-merge checklist
 
-- [ ] O PR refere-se a um único assunto com um título e descrição em frases completas e gramaticalmente corretas?
-- [ ] Verifique se a branch do recurso está atualizada com `master` (se não -rebase ela).
-- [ ] Verifique novamente a ualidade de [commit messages](https://cbea.ms/git-commit/).
-- [ ] Squash commits relacionados juntos.
+- [ ] Does the PR refer to a single subject with a title and description in complete and grammatically correct sentences?
+- [ ] Check if the feature branch is up to date with `master` (if not, rebase it).
+- [ ] Review the quality of the [commit messages](https://cbea.ms/git-commit/).
+- [ ] Squash related commits together.
 
-## Capturas de tela
+## Feature screenshots
 
-| Antes | Depois |
+| Before | After |
 | ------ | ----- |
 | Image  | Image |

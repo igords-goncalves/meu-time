@@ -1,28 +1,37 @@
 .c-footer {
-  background-color: #8D1B3D;
+  background-color: #8d1b3d;
 
   .u-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
-    padding: 60px 0;
+    padding: 30px 60px;
 
     .c-footer__title {
       color: #fff;
-      font-size: 1.6em;
-      font-weight: 500;
+      font-size: 1em;
+      font-weight: 700;
       padding-bottom: 8px;
     }
-
     .c-footer__item {
+      list-style: none;
+      padding: 4px 0;
+    }
+
+    .c-footer__item a {
       color: #fff;
       list-style: none;
-      font-size: 1.125em;
-      padding: 8px 0;
+      font-size: 0.8em;
+      text-decoration: none;
+    }
+
+    .c-footer__item p {
+      color: #fff;
+      font-size: 0.8em;
     }
 
     .c-footer__img {
-      max-width: 20%;
+      max-width: 15%;
     }
   }
 }
