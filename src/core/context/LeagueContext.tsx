@@ -1,4 +1,4 @@
-import { createContext } from 'react';
+import { Dispatch, SetStateAction, createContext } from 'react';
 
 export interface League {
   league: {
@@ -17,7 +17,7 @@ export interface League {
 
 interface LeagueContextType {
   leagues: League[] | null;
-  setLeagues: (leagues: League[] | null) => void;
+  setLeagues: Dispatch<SetStateAction<League[] | null>>;
   season: number | null;
   setSeason: (season: number | null) => void;
   selectedLeague: number | null;
