@@ -5,7 +5,7 @@ import { Search } from 'lucide-react';
 export const TeamsTable = () => {
   return (
     <>
-      <h3>Liga Seleciona</h3>
+      <h3>Liga Selecionada</h3>
       <div className="search-container">
         <Search className="search-icon" size={16} />
         <input
@@ -16,14 +16,16 @@ export const TeamsTable = () => {
       </div>
       <table>
         <thead>
-          <th>Escudo</th>
-          <th className="name">Nome</th>
-          <th>Sigla</th>
-          <th>Fundação</th>
-          <th>Arena</th>
-          <th>Capacidade</th>
-          <th>Local</th>
-          <th>Detalhes</th>
+          <tr>
+            <th>Escudo</th>
+            <th className="name">Nome</th>
+            <th>Sigla</th>
+            <th>Fundação</th>
+            <th>Arena</th>
+            <th>Capacidade</th>
+            <th>Local</th>
+            <th>Detalhes</th>
+          </tr>
         </thead>
         <tbody>
           <TableCell />

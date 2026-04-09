@@ -50,16 +50,16 @@ export const Footer = () => {
           <h2 className="c-footer__title">Legal</h2>
           <ul className="c-footer__menu">
             <li className="c-footer__item">
-              <a href="#">Sobre</a>
+              <p>Sobre</p>
             </li>
             <li className="c-footer__item">
-              <a href="#">Liderança</a>
+              <p>Liderança</p>
             </li>
             <li className="c-footer__item">
-              <a href="#">Contato</a>
+              <p>Contato</p>
             </li>
             <li className="c-footer__item">
-              <a href="#">Políticas de Privacidade</a>
+              <p>Políticas de Privacidade</p>
             </li>
           </ul>
         </div>
@@ -67,10 +67,10 @@ export const Footer = () => {
           <h2 className="c-footer__title">Fifa</h2>
           <ul className="c-footer__menu">
             <li className="c-footer__item">
-              <a href="#">Serviços</a>
+              <p>Serviços</p>
             </li>
             <li className="c-footer__item">
-              <a href="#">Patrocinadores</a>
+              <p>Patrocinadores</p>
             </li>
           </ul>
         </div>

@@ -15,7 +15,9 @@ export const useSelectLeagues = (league: any) => {
   const handleSeasonChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const seasonYear = parseInt(event.target.value);
     const season = league.seasons.find((s: any) => s.year === seasonYear);
-    setSelectedSeason(season);
+    if (season) {
+      setSelectedSeason(season);
+    }
   };
 
   return {

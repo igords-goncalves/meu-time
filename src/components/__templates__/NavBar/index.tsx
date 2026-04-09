@@ -1,6 +1,6 @@
 import './style.scss';
 import { CircleUserRound, House, LogOut } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../../hooks/useAuthContext';
 
 export const NavBar = () => {
@@ -55,7 +55,7 @@ export const NavBar = () => {
               <ul>
                 <li>
                   <House size={14} />
-                  <a href="/home">Home</a>
+                  <Link to={'/home'}>Home</Link>
                 </li>
                 <li>
                   <LogOut size={14} color="red" />

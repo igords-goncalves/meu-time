@@ -13,11 +13,10 @@ export const LeagueSelector = ({ league }: LeagueSelectorProps) => {
   const { setSelectedLeague, setSelectedSeason } = useLeaguesContext();
 
   const handleViewTeams = () => {
-    setSelectedLeague(league.league.id);
-    setSelectedSeason(selectedSeason.year);
+    if (!league?.league?.id || !selectedSeason?.year) return;
 
-    console.log('Liga salva:', league.league.id);
-    console.log('Temporada salva:', selectedSeason.year);
+    setSelectedLeague(league.league.id);
+    setSelectedSeason(selectedSeason?.year);
   };
 
   return (

@@ -65,6 +65,10 @@ export const LoginForm = (): JSX.Element => {
               type="button"
               className="c-logincard__toggle-btn"
               onClick={() => setShowKey(prev => !prev)}
+              aria-label={
+                showKey ? 'Ocultar chave de acesso' : 'Mostrar chave de acesso'
+              }
+              aria-pressed={showKey}
             >
               {showKey ? <LockOpen size={18} /> : <Lock size={18} />}
             </button>
