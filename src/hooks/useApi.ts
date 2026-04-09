@@ -22,7 +22,7 @@ export const useApi = () => {
       return res.data;
     },
 
-    getTeams: async (league: number, season: number) => {
+    getTeams: async (league: number | null, season: number | null) => {
       if (!league || !season) return { response: [], errors: [] };
 
       const res = await axiosInstances().api.get(
