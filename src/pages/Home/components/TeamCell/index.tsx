@@ -67,6 +67,7 @@ export const TableCell = () => {
       const data = await api.getTeams(selectedLeague, selectedSeason);
       const response = await data.response;
       setTeams(response);
+      console.log(teams);
       return;
     }
 
