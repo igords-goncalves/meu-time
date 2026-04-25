@@ -4,8 +4,13 @@ import { Footer } from '../../components/__templates__/Footer';
 import { NavBar } from '../../components/__templates__/NavBar';
 import './style.scss';
 import { TeamsTable } from './components/TeamsTable';
+import { useCodeCountry } from '../../hooks/useCodeCountry';
+import { useLeaguesContext } from '../../hooks/useLeaguesContext';
 
 export const Home = () => {
+  const { code } = useCodeCountry();
+  const { selectedLeague } = useLeaguesContext();
+
   return (
     <>
       <NavBar />
@@ -32,9 +37,11 @@ export const Home = () => {
               time abaixo.
             </p>
           </div>
-          <div className="slider">
-            <LeaguesSlide />
-          </div>
+          {code && (
+            <div className="slider">
+              <LeaguesSlide />
+            </div>
+          )}
         </div>
       </section>
       <hr />
@@ -43,12 +50,14 @@ export const Home = () => {
           <div className="section__wrapper">
             <h2 className="section__title">Principais Times</h2>
             <p className="section__text">
-              Clique em + detalhes de um time para ver todas mais informações.
+              Clique em + detalhes de um time para ver mais informações.
             </p>
           </div>
-          <div className="slider">
-            <TeamsTable />
-          </div>
+          {selectedLeague && (
+            <div className="slider">
+              <TeamsTable />
+            </div>
+          )}
         </div>
       </section>
       <Footer />
