@@ -17,9 +17,8 @@ export const TeamsTable = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    let cancelled = false;
     async function fetchTeams() {
-      if (!selectedLeague || !selectedSeason) return;
-
       setLoading(true);
       try {
         const data = await api.getTeams(selectedLeague, selectedSeason);
@@ -27,14 +26,19 @@ export const TeamsTable = () => {
         setTeams(response);
         setCurrentPage(1);
       } catch (error) {
+        if (cancelled) return;
         console.error('Erro ao buscar times:', error);
         setTeams([]);
       } finally {
-        setLoading(false);
+        if (!cancelled) setLoading(false);
       }
     }
 
     fetchTeams();
+    return () => {
+      cancelled = true;
+    };
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedLeague, selectedSeason]);
 
@@ -49,7 +53,7 @@ export const TeamsTable = () => {
     return <div className="loading">Carregando times...</div>;
   }
 
-  if (teams.length === 0) {
+  if (selectedLeague === null || selectedSeason === null) {
     return (
       <div className="empty-state">Nenhum time encontrado para esta liga.</div>
     );

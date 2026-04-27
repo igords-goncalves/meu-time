@@ -27,7 +27,7 @@ Ele complementa os mini-specs e prompts tecnicos, evitando ambiguidade e retraba
 - Implementar novas soluções sem overengineering: simplicidade e clareza sao preferiveis a complexidade desnecessaria.
 - Preservar comportamento existente fora do escopo da tarefa.
 - Novos componentes devem ser criados seguindo o padrão `export const ComponentName = () => { ... }`.
-- O armanezamento dos componentes deve respeitar a estrutura de pastas atual como em `docs/documentacao-tecnica.md`.
+- O armazenamento dos componentes deve respeitar a estrutura de pastas atual como em `docs/documentacao-tecnica.md`.
 - Lógicas complexas devem ser abstraídas em hooks customizados ou funções auxiliares, não diretamente no JSX dos componentes.
 - Manter a consistencia visual e de UX com o que ja existe, evitando introduzir novos estilos ou padrões sem necessidade.
 

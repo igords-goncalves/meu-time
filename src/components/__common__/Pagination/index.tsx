@@ -18,7 +18,7 @@ export const Pagination = ({
         onClick={() => setCurrentPage((p: number) => Math.max(1, p - 1))}
         disabled={currentPage === 1}
       >
-        <ArrowLeft className="rotate-icon" size={12} />
+        <ArrowLeft size={12} />
       </button>
       <span>
         Página {currentPage} de {totalPages}
@@ -29,7 +29,7 @@ export const Pagination = ({
         }
         disabled={currentPage === totalPages}
       >
-        <ArrowRight className="rotate-icon" size={12} />
+        <ArrowRight size={12} />
       </button>
     </div>
   );

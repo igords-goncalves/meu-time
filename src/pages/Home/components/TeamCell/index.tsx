@@ -2,6 +2,8 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '../../../../components/__common__';
 import { Team } from '../../../../types/team';
 
+const TEAM_LOGO_FALLBACK = 'https://logoipsum.com/artwork/357';
+
 const btnStyle = {
   height: '30px',
   width: '66px',
@@ -20,16 +22,24 @@ export const TableCell = ({ teams }: TableCellProps) => {
     navigate('/dashboard');
   };
 
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    if (e.currentTarget.src !== TEAM_LOGO_FALLBACK) {
+      e.currentTarget.src = TEAM_LOGO_FALLBACK;
+      e.currentTarget.onerror = null;
+    }
+  };
+
   return (
     <>
       {teams.map(team => (
         <tr key={team.team.id}>
           <td>
             <img
-              src={team.team.logo}
-              alt={`${team.team.name} Logo`}
+              src={team.team.logo || TEAM_LOGO_FALLBACK}
+              alt={team.team.name || '-'}
               width={24}
               height={24}
+              onError={handleImageError}
             />
           </td>
           <td>{team.team.name || '-'}</td>

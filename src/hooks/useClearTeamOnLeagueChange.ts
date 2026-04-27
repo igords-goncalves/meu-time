@@ -1,15 +1,19 @@
-import { useEffect } from 'react';
+import { Dispatch, SetStateAction, useEffect, useRef } from 'react';
 import { useLeaguesContext } from './useLeaguesContext';
+import { Team } from '../types/team';
 
 export const useClearTeamOnLeagueChange = (
-  setSelectedTeam?: (team: null) => void,
+  setSelectedTeam?: Dispatch<SetStateAction<Team | null>>,
 ) => {
   const { selectedLeague } = useLeaguesContext();
+  const prevLeagueRef = useRef(selectedLeague);
 
   useEffect(() => {
-    // Limpar time selecionado ao mudar de liga
-    if (setSelectedTeam) {
-      setSelectedTeam(null);
+    if (prevLeagueRef.current !== selectedLeague) {
+      prevLeagueRef.current = selectedLeague;
+      if (setSelectedTeam) {
+        setSelectedTeam(null);
+      }
     }
   }, [selectedLeague, setSelectedTeam]);
 };
