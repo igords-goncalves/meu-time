@@ -5,16 +5,9 @@ import { ToastContainer } from 'react-toastify';
 import { MainRoute as Route } from './router/routes';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Login } from './pages/Login';
-import { Dashboard } from './pages/Dashboard';
-import { Home } from './pages/Home';
 import { Provider } from './Providers/Provider';
 import { privateRoute } from './router/privateRoute';
-
-const ROUTES = [
-  { path: '/', component: Login },
-  { path: '/home', component: Home },
-  { path: '/dashboard', component: Dashboard },
-];
+import { ROUTES } from './constants/routes';
 
 function App() {
   return (
