@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../../../../components/__common__';
 import { Team } from '../../../../types/team';
+import { ROUTES } from '../../../../constants/routes';
 
 const TEAM_LOGO_FALLBACK = 'https://logoipsum.com/artwork/357';
 
@@ -19,7 +20,9 @@ export const TableCell = ({ teams }: TableCellProps) => {
   const navigate = useNavigate();
 
   const handleLeagueSelected = () => {
-    navigate('/dashboard');
+    const DASHBOARD = ROUTES.find(route => route.path === '/dashboard');
+    if (!DASHBOARD) return;
+    navigate(DASHBOARD.path);
   };
 
   const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>) => {
@@ -34,13 +37,17 @@ export const TableCell = ({ teams }: TableCellProps) => {
       {teams.map(team => (
         <tr key={team.team.id}>
           <td>
-            <img
-              src={team.team.logo || TEAM_LOGO_FALLBACK}
-              alt={team.team.name || '-'}
-              width={24}
-              height={24}
-              onError={handleImageError}
-            />
+            {team.team.logo ? (
+              <img
+                src={team.team.logo}
+                alt={team.team.name || '-'}
+                width={24}
+                height={24}
+                onError={handleImageError}
+              />
+            ) : (
+              '-'
+            )}
           </td>
           <td>{team.team.name || '-'}</td>
           <td>{team.team.code || '-'}</td>
