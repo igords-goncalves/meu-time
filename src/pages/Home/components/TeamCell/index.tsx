@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '../../../../components/__common__';
 import { Team } from '../../../../types/team';
 import { ROUTES } from '../../../../constants/routes';
+import { SyntheticEvent } from 'react';
 
 const TEAM_LOGO_FALLBACK = 'https://logoipsum.com/artwork/357';
 
@@ -25,7 +26,7 @@ export const TableCell = ({ teams }: TableCellProps) => {
     navigate(DASHBOARD.path);
   };
 
-  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>) => {
+  const handleImageError = (e: SyntheticEvent<HTMLImageElement>) => {
     if (e.currentTarget.src !== TEAM_LOGO_FALLBACK) {
       e.currentTarget.src = TEAM_LOGO_FALLBACK;
       e.currentTarget.onerror = null;
