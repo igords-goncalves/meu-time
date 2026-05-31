@@ -1,12 +1,16 @@
 import './style.scss';
-import { CircleUserRound, House, LogOut } from 'lucide-react';
+import { CircleUserRound, House, LogOut, RefreshCcw } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../../hooks/useAuthContext';
+import { useUpdateRequests } from '../../../hooks/useUpdateRequests';
+import { Button } from '../../__common__';
 
 export const NavBar = () => {
   const { user, logout } = useAuthContext();
-  const navigate = useNavigate();
+  const { request, limitDay, handleUpdateRequests, loadingStatus } =
+    useUpdateRequests(user);
 
+  const navigate = useNavigate();
   const handleLogout = () => {
     logout();
     navigate('/');
@@ -40,28 +44,48 @@ export const NavBar = () => {
                     <strong>Plano</strong>: {user?.subscription?.plan}
                   </p>
                   <p className="c-header__plans-status">
-                    {user?.subscription?.active ? 'active' : ''}
+                    {user?.subscription?.active ? 'ativo' : ''}
                   </p>
                 </div>
                 <div className="c-header__plans">
-                  <p>
-                    <strong>Consultas:</strong> {user?.requests?.current}
+                  <p className="c-header__plans-requests">
+                    <strong>Consultas: </strong>
+                    {loadingStatus ? 'Atualizando...' : request}
                   </p>
                   <p>
-                    <strong>Limite:</strong> {user?.requests?.limit_day}
+                    <strong>Limite:</strong> {limitDay}
                   </p>
                 </div>
               </div>
               <ul>
+                <li>
+                  <RefreshCcw size={14} />
+                  <Button
+                    type="button"
+                    onClick={e => {
+                      e.preventDefault();
+                      handleUpdateRequests();
+                    }}
+                  >
+                    Consultas
+                  </Button>
+                </li>
                 <li>
                   <House size={14} />
                   <Link to={'/home'}>Home</Link>
                 </li>
                 <li>
                   <LogOut size={14} color="red" />
-                  <a href="#" style={{ color: 'red' }} onClick={handleLogout}>
+                  <Button
+                    type="button"
+                    style={{ color: 'red' }}
+                    onClick={e => {
+                      e.preventDefault();
+                      handleLogout();
+                    }}
+                  >
                     Sair
-                  </a>
+                  </Button>
                 </li>
               </ul>
             </div>

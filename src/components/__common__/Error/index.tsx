@@ -6,5 +6,9 @@ type ErrorProps = {
 };
 
 export const Error = ({ children }: ErrorProps) => {
-  return <span className="u-iserror">{children}</span>;
+  return (
+    <span className="u-iserror" data-testid="cy-error">
+      {children}
+    </span>
+  );
 };

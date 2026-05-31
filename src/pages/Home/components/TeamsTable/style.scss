@@ -25,9 +25,10 @@
 table {
   border-radius: 6px;
   width: 100%;
-  border: 1px solid #bebebe;
+  border: 1px solid #e8e8e8;
   border-collapse: separate;
   border-spacing: 0;
+  margin: 0 12px;
 
   thead {
     text-align: left;
@@ -51,6 +52,10 @@ table {
 
     th.name {
       width: 200px;
+    }
+
+    th.temporada {
+      text-align: end;
     }
   }
 

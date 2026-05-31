@@ -7,8 +7,8 @@ Ele complementa os mini-specs e prompts tecnicos, evitando ambiguidade e retraba
 
 ## Fontes de verdade (ordem de prioridade)
 
-1. Requisito funcional oficial (Issue `#1` e user stories criadas a partir dele) https://github.com/igords-goncalves/meu-time/issues/1.
-2. `docs/documentacao-tecnica.md` (contexto arquitetural, estrutural e links de documentacao da API).
+1. Requisito funcional oficial (Issue `#1` e user stories e tasks criadas a partir dele) https://github.com/igords-goncalves/meu-time/issues/1.
+2. `docs/documentacao-tecnica.md` (contexto arquitetural, estrutural, links de documentacao da API e documentação técnológica do projeto).
 3. Este `regras-desenvolvimento.md` (regras gerais de execucao).
 
 ## Regras globais de negocio (fluxo principal)
@@ -28,12 +28,12 @@ Ele complementa os mini-specs e prompts tecnicos, evitando ambiguidade e retraba
 - Preservar comportamento existente fora do escopo da tarefa.
 - Novos componentes devem ser criados seguindo o padrão `export const ComponentName = () => { ... }`.
 - O armazenamento dos componentes deve respeitar a estrutura de pastas atual como em `docs/documentacao-tecnica.md`.
-- Lógicas complexas devem ser abstraídas em hooks customizados ou funções auxiliares, não diretamente no JSX dos componentes.
+- Lógicas complexas devem ser abstraídas em hooks customizados ou funções auxiliares caso essa lógica seja reutilizável, não diretamente no TSX dos componentes, componentes devem ter uma única responsabilidade de renderização e orquestração de UI.
 - Manter a consistencia visual e de UX com o que ja existe, evitando introduzir novos estilos ou padrões sem necessidade.
 
 ## Regras de consumo de API
 
-- Usar o padrao existente com `useApi`.
+- Usar o padrao existente com `useApi` para fazer chamadas à API, garantindo que a chave de API seja gerenciada corretamente pelo `AuthProvider`.
 - Evitar requisicoes desnecessarias (respeitar limites da API-Sports atualmente em 100/dia).
 - Tratar explicitamente estados de `loading`, `erro` e `vazio` na UI.
 - Nao assumir que a API sempre retorna dados completos.

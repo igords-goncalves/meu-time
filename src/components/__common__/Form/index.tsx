@@ -19,7 +19,7 @@ export const Form = ({ children, onSubmit: handleSubmit }: FormProps) => {
   };
 
   return (
-    <form className="form" onSubmit={submitHandler}>
+    <form className="form" onSubmit={submitHandler} data-testid="cy-login-form">
       {children}
     </form>
   );

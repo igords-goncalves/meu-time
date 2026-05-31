@@ -13,7 +13,10 @@ export const Login = () => {
           <section className="c-section">
             <div className="c-section__login">
               <LoginForm />
-              <p className="c-section__paragraph">
+              <p
+                className="c-section__paragraph"
+                data-testid="cy-login-instructions"
+              >
                 Para efetuar o login você deve criar uma conta em{' '}
                 <Link
                   target="_blank"

@@ -10,7 +10,13 @@ type LinkProps = {
 
 export const Link = ({ children, href, rel, target }: LinkProps) => {
   return (
-    <a className="c-logincard__link" href={href} rel={rel} target={target}>
+    <a
+      className="c-logincard__link"
+      href={href}
+      rel={rel}
+      target={target}
+      data-testid="cy-link"
+    >
       {children}
     </a>
   );
