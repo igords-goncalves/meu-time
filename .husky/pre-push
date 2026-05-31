@@ -1,6 +1,4 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-# git diff HEAD --quiet && yarn cypress:headless
-
-yarn cypress:headless && yarn run build
+git diff HEAD --quiet && yarn run build

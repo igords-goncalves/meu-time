@@ -1,5 +1,5 @@
 import './style.scss';
-import { useState } from 'react';
+import { useState, type FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Lock, LockOpen } from 'lucide-react';
 import { useAuthContext } from '../../../../hooks/useAuthContext';
@@ -23,7 +23,7 @@ export const LoginForm = (): JSX.Element => {
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError(false);
 
@@ -54,11 +54,10 @@ export const LoginForm = (): JSX.Element => {
         `Login efetuado com sucesso ${response.data.response.account.firstname}!`,
       );
       navigate('/home');
-    } catch (error: any) {
+    } catch {
       // Verifica a request quanto ao HTTP
       sessionStorage.removeItem('user');
       sessionStorage.removeItem('apiKey');
-      console.error('Erro no login:', error);
       setErrorMessage('Chave de acesso inválida. Verifique e tente novamente.');
       setError(true);
     }

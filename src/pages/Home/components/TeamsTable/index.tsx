@@ -5,8 +5,6 @@ import { useLeaguesContext } from '../../../../hooks/useLeaguesContext';
 import { Pagination } from '../../../../components/__common__/Pagination';
 import { useFetchTeams } from '../../../../hooks/useFetchTeams';
 
-const TEAMS_PER_PAGE = 10;
-
 export const TeamsTable = () => {
   const { selectedLeague, selectedSeason } = useLeaguesContext();
 
@@ -19,11 +17,6 @@ export const TeamsTable = () => {
     league,
     season,
   } = useFetchTeams(selectedLeague, selectedSeason);
-
-  const paginatedTeams = teams.slice(
-    (currentPage - 1) * TEAMS_PER_PAGE,
-    currentPage * TEAMS_PER_PAGE,
-  );
 
   if (loading) {
     return <div className="loading">Carregando times...</div>;
@@ -60,13 +53,13 @@ export const TeamsTable = () => {
           </tr>
         </thead>
         <tbody>
-          <TableCell teams={paginatedTeams} league={league} season={season} />
+          <TableCell teams={teams} league={league} season={season} />
         </tbody>
       </table>
       {totalPages > 1 && (
         <Pagination
           currentPage={currentPage}
-          totalPages={Math.ceil(totalPages / TEAMS_PER_PAGE)}
+          totalPages={totalPages}
           setCurrentPage={setCurrentPage}
         />
       )}

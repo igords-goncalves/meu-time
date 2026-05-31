@@ -12,13 +12,22 @@ export const useFetchTeams = (league: number | null, season: number | null) => {
   useEffect(() => {
     let cancelled = false;
     async function fetchTeams() {
+      if (league == null || season == null) {
+        setTeams([]);
+        setCurrentPage(1);
+        setTotalPages(1);
+        return;
+      }
+
       setLoading(true);
       try {
         const data = await api.getTeams(league, season);
+        if (cancelled) return;
+
         const response = data.response || [];
         setTeams(response);
         setCurrentPage(data.paging?.current || 1);
-        setTotalPages(data.results || response.length);
+        setTotalPages(data.paging?.total || 1);
       } catch (error) {
         if (cancelled) return;
         console.error('Erro ao buscar times:', error);

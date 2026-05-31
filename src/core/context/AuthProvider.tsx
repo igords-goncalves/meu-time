@@ -33,7 +33,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       throw new Error('API Key e User são obrigatórios');
     }
 
-    console.log(JSON.stringify(user));
     // Armazena primeiro no sessionStorage
     sessionStorage.setItem('apiKey', apiKey);
     sessionStorage.setItem('user', JSON.stringify(user));

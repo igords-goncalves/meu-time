@@ -1,4 +1,11 @@
-import { useCallback, useMemo, useState } from 'react';
+import {
+  useCallback,
+  useMemo,
+  useState,
+  type Dispatch,
+  type SetStateAction,
+  type ChangeEvent,
+} from 'react';
 import { Slider } from '../../../../components/__common__';
 import { LeagueSelector } from '../LeagueSelector';
 import { Search } from 'lucide-react';
@@ -40,7 +47,7 @@ export const LeaguesSlide = () => {
   const compareInputs = useCallback(
     (
       searchValue: string,
-      setState: React.Dispatch<React.SetStateAction<League[] | null>>,
+      setState: Dispatch<SetStateAction<League[] | null>>,
       originalData: League[] | null,
     ) => {
       if (searchValue.length < 1 || searchValue === '') {
@@ -49,10 +56,10 @@ export const LeaguesSlide = () => {
       }
 
       if (searchValue.length >= 1) {
-        return setState((prevLeagues: any) =>
-          prevLeagues?.filter((l: League) =>
+        return setState(
+          originalData?.filter((l: League) =>
             normalizeString(l.league.name).includes(searchValue),
-          ),
+          ) ?? null,
         );
       }
     },
@@ -60,7 +67,7 @@ export const LeaguesSlide = () => {
   );
 
   const handleSearchChange = useMemo(() => {
-    return (e: React.ChangeEvent<HTMLInputElement>) => {
+    return (e: ChangeEvent<HTMLInputElement>) => {
       const searchValue = normalizeString(e.target.value);
       setSearchedLeague(e.target.value);
 

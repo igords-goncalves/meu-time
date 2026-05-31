@@ -12,17 +12,27 @@ export const useFetchLeagues = () => {
   const { code } = useCodeCountry();
 
   useEffect(() => {
+    let cancelled = false;
+
     async function featchLeagues() {
       if (!code) return;
 
       const data = await api.getLeagues(code);
-      const response = await data.response;
+      const response = data.response;
+
+      if (cancelled) return;
+
       setLeagues(response);
       setOriginalLeagues(response);
       return;
     }
 
     featchLeagues();
+
+    return () => {
+      cancelled = true;
+    };
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [code]);
 
