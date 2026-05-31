@@ -84,11 +84,11 @@
         line-height: normal;
 
         &.active {
-          background: #1f7a1f;
+          background: lime;
         }
 
         &.finished {
-          background: #b42318;
+          background: red;
         }
       }
     }

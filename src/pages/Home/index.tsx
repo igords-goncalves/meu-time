@@ -11,15 +11,14 @@ export const Home = () => {
   const { code } = useCodeCountry();
   const { selectedLeague } = useLeaguesContext();
 
-  return (
-    <>
-      <NavBar />
+  function Countries() {
+    return (
       <section className="section__countries">
         <div className="u-container">
           <div className="section__wrapper">
             <h2 className="section__title">Países</h2>
             <p className="section__text">
-              Selecione um país para lsitas todas as ligas abaixo.
+              Selecione um país para listar todas as ligas.
             </p>
           </div>
           <div className="slider">
@@ -27,14 +26,18 @@ export const Home = () => {
           </div>
         </div>
       </section>
-      <hr />
+    );
+  }
+
+  function Leagues() {
+    return (
       <section className="section__leagues">
         <div className="u-container">
           <div className="section__wrapper">
             <h2 className="section__title">Principais Ligas</h2>
             <p className="section__text">
               Selecione uma liga na lista e defina uma temporada para listar os
-              time abaixo.
+              times abaixo.
             </p>
           </div>
           {code && (
@@ -44,13 +47,18 @@ export const Home = () => {
           )}
         </div>
       </section>
-      <hr />
+    );
+  }
+
+  function Teams() {
+    return (
       <section className="section__leagues">
         <div className="u-container">
           <div className="section__wrapper">
             <h2 className="section__title">Principais Times</h2>
             <p className="section__text">
-              Clique em + detalhes de um time para ver mais informações.
+              Clique no botão <strong>+ detalhes</strong> de um time para ver
+              mais informações sobre o time selecionado.
             </p>
           </div>
           {selectedLeague && (
@@ -60,6 +68,17 @@ export const Home = () => {
           )}
         </div>
       </section>
+    );
+  }
+
+  return (
+    <>
+      <NavBar />
+      <Countries />
+      <hr />
+      <Leagues />
+      <hr />
+      <Teams />
       <Footer />
     </>
   );

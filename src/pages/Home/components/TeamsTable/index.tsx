@@ -1,53 +1,29 @@
 import { TableCell } from '../TeamCell';
 import './style.scss';
 import { Search } from 'lucide-react';
-import { useEffect, useState } from 'react';
 import { useLeaguesContext } from '../../../../hooks/useLeaguesContext';
-import { useApi } from '../../../../hooks/useApi';
-import { Team } from '../../../../types/team';
 import { Pagination } from '../../../../components/__common__/Pagination';
+import { useFetchTeams } from '../../../../hooks/useFetchTeams';
 
 const TEAMS_PER_PAGE = 10;
 
 export const TeamsTable = () => {
   const { selectedLeague, selectedSeason } = useLeaguesContext();
-  const api = useApi();
-  const [teams, setTeams] = useState<Team[]>([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    let cancelled = false;
-    async function fetchTeams() {
-      setLoading(true);
-      try {
-        const data = await api.getTeams(selectedLeague, selectedSeason);
-        const response = data.response || [];
-        setTeams(response);
-        setCurrentPage(1);
-      } catch (error) {
-        if (cancelled) return;
-        console.error('Erro ao buscar times:', error);
-        setTeams([]);
-      } finally {
-        if (!cancelled) setLoading(false);
-      }
-    }
-
-    fetchTeams();
-    return () => {
-      cancelled = true;
-    };
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedLeague, selectedSeason]);
+  const {
+    currentPage,
+    setCurrentPage,
+    totalPages,
+    teams,
+    loading,
+    league,
+    season,
+  } = useFetchTeams(selectedLeague, selectedSeason);
 
   const paginatedTeams = teams.slice(
     (currentPage - 1) * TEAMS_PER_PAGE,
     currentPage * TEAMS_PER_PAGE,
   );
-
-  const totalPages = Math.ceil(teams.length / TEAMS_PER_PAGE);
 
   if (loading) {
     return <div className="loading">Carregando times...</div>;
@@ -61,7 +37,7 @@ export const TeamsTable = () => {
 
   return (
     <>
-      <h3>Liga Selecionada</h3>
+      <p>Pesquise por um time</p>
       <div className="search-container">
         <Search className="search-icon" size={16} />
         <input
@@ -78,17 +54,19 @@ export const TeamsTable = () => {
             <th>Sigla</th>
             <th>Fundação</th>
             <th>País</th>
+            <th>Liga</th>
+            <th className="temporada">Temporada</th>
             <th>Informações</th>
           </tr>
         </thead>
         <tbody>
-          <TableCell teams={paginatedTeams} />
+          <TableCell teams={paginatedTeams} league={league} season={season} />
         </tbody>
       </table>
       {totalPages > 1 && (
         <Pagination
           currentPage={currentPage}
-          totalPages={totalPages}
+          totalPages={Math.ceil(totalPages / TEAMS_PER_PAGE)}
           setCurrentPage={setCurrentPage}
         />
       )}

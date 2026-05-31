@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useAuthContext } from './useAuthContext';
 import { useApi } from './useApi';
 import { Countries } from '../types/countries';
+import { readDataCache } from '../utils/cacheDataStrategy';
 
 const COUNTRIES_CACHE_KEY = 'meu-time:countries:v1';
 
@@ -13,26 +14,11 @@ const groupCountriesBy3 = (items: Countries[]): Countries[][] => {
   return grouped;
 };
 
-const readCountriesCache = (): Countries[][] | null => {
-  const raw = localStorage.getItem(COUNTRIES_CACHE_KEY);
-  if (!raw) return null;
-
-  try {
-    const parsed = JSON.parse(raw);
-    if (Array.isArray(parsed) && parsed.every(Array.isArray)) {
-      return parsed as Countries[][];
-    }
-    localStorage.removeItem(COUNTRIES_CACHE_KEY);
-    return null;
-  } catch {
-    localStorage.removeItem(COUNTRIES_CACHE_KEY);
-    return null;
-  }
-};
-
 export const useFetchCountres = () => {
   const [countries, setCountries] = useState<Countries[][]>([]);
   const [limitError, setLimitError] = useState<string | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
 
   const { user, apiKey } = useAuthContext();
@@ -53,7 +39,7 @@ export const useFetchCountres = () => {
     if (hasFetched.current) return;
     if (!user) return;
 
-    const cached = readCountriesCache();
+    const cached = readDataCache<Countries[][]>(COUNTRIES_CACHE_KEY);
     if (cached) {
       setCountries(cached);
       hasFetched.current = true;
@@ -68,6 +54,8 @@ export const useFetchCountres = () => {
         if (data?.response && data.response.length > 0) {
           const grouped = groupCountriesBy3(data.response);
           setCountries(grouped);
+          setCurrentPage(data.paging?.current || 1);
+          setTotalPages(data.results || 1);
           localStorage.setItem(COUNTRIES_CACHE_KEY, JSON.stringify(grouped));
           hasFetched.current = true;
           return;
@@ -79,6 +67,7 @@ export const useFetchCountres = () => {
       } catch (error) {
         console.error('Erro ao buscar os dados', error);
         hasFetched.current = true;
+        setIsLoading(false);
       } finally {
         setIsLoading(false);
       }
@@ -91,5 +80,8 @@ export const useFetchCountres = () => {
     countries,
     limitError,
     isLoading,
+    currentPage,
+    totalPages,
+    setCurrentPage,
   };
 };

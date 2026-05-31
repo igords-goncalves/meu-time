@@ -3,8 +3,10 @@ import { Button } from '../../../../components/__common__';
 import { Team } from '../../../../types/team';
 import { ROUTES } from '../../../../constants/routes';
 import { SyntheticEvent } from 'react';
+import './style.scss';
+import { useLeaguesContext } from '../../../../hooks/useLeaguesContext';
 
-const TEAM_LOGO_FALLBACK = 'https://logoipsum.com/artwork/357';
+const TEAM_LOGO_FALLBACK = 'https://logoipsum.com/artwork/413';
 
 const btnStyle = {
   height: '30px',
@@ -15,10 +17,13 @@ const btnStyle = {
 
 type TableCellProps = {
   teams: Team[];
+  league: number | null;
+  season: number | null;
 };
 
-export const TableCell = ({ teams }: TableCellProps) => {
+export const TableCell = ({ teams, league, season }: TableCellProps) => {
   const navigate = useNavigate();
+  const { leagues } = useLeaguesContext();
 
   const handleLeagueSelected = () => {
     const DASHBOARD = ROUTES.find(route => route.path === '/dashboard');
@@ -32,6 +37,8 @@ export const TableCell = ({ teams }: TableCellProps) => {
       e.currentTarget.onerror = null;
     }
   };
+
+  const leagueName = leagues?.find(l => l.league.id === league);
 
   return (
     <>
@@ -53,7 +60,9 @@ export const TableCell = ({ teams }: TableCellProps) => {
           <td>{team.team.name || '-'}</td>
           <td>{team.team.code || '-'}</td>
           <td>{team.team.founded || '-'}</td>
-          <td>{team.team.country || '-'}</td>
+          <td className="teams-country">{team.team.country || '-'}</td>
+          <td>{leagueName?.league.name || '-'}</td>
+          <td className="teams-season">{season !== null ? season : '-'}</td>
           <td className="teams-info">
             <Button
               type="button"
