@@ -1,4 +1,4 @@
-import { ReactNode, useState, useEffect } from 'react';
+import { ReactNode, useState, useEffect, useMemo } from 'react';
 import { AuthContext } from './AuthContext';
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
@@ -49,10 +49,20 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     setApiKey(null);
   };
 
+  const value = useMemo(
+    () => ({
+      apiKey,
+      setApiKey,
+      user,
+      setUser,
+      login,
+      logout,
+    }),
+    [apiKey, user],
+  );
+
   return (
-    <AuthContext.Provider
-      value={{ apiKey, setApiKey, user, setUser, login, logout }}
-    >
+    <AuthContext.Provider value={value}>
       {isInitialized && children}
     </AuthContext.Provider>
   );

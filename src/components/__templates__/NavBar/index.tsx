@@ -3,6 +3,7 @@ import { CircleUserRound, House, LogOut, RefreshCcw } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../../hooks/useAuthContext';
 import { useUpdateRequests } from '../../../hooks/useUpdateRequests';
+import { Button } from '../../__common__';
 
 export const NavBar = () => {
   const { user, logout } = useAuthContext();
@@ -59,15 +60,15 @@ export const NavBar = () => {
               <ul>
                 <li>
                   <RefreshCcw size={14} />
-                  <a
-                    href="#"
+                  <Button
+                    type="button"
                     onClick={e => {
                       e.preventDefault();
                       handleUpdateRequests();
                     }}
                   >
                     Consultas
-                  </a>
+                  </Button>
                 </li>
                 <li>
                   <House size={14} />
@@ -75,8 +76,8 @@ export const NavBar = () => {
                 </li>
                 <li>
                   <LogOut size={14} color="red" />
-                  <a
-                    href="#"
+                  <Button
+                    type="button"
                     style={{ color: 'red' }}
                     onClick={e => {
                       e.preventDefault();
@@ -84,7 +85,7 @@ export const NavBar = () => {
                     }}
                   >
                     Sair
-                  </a>
+                  </Button>
                 </li>
               </ul>
             </div>

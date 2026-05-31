@@ -2,7 +2,7 @@ import './style.scss';
 
 type PropsButton = {
   type: 'button' | 'submit' | 'reset';
-  onClick?: () => void;
+  onClick?: (e?: any) => void;
   style?: object;
   children: React.ReactNode;
 };

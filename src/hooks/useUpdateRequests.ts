@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useApi } from './useApi';
 
 export const useUpdateRequests = (user: User | null) => {
-  const [request, setRequests] = useState<number | null>(null);
+  const [request, setRequest] = useState<number | null>(null);
   const [limitDay, setLimitDay] = useState<number | null>(null);
   const [loadingStatus, setLoadingStatus] = useState(false);
   const api = useApi();
@@ -14,7 +14,7 @@ export const useUpdateRequests = (user: User | null) => {
     try {
       const requests: { current: number; limit_day: number } =
         await api.updateRequests();
-      setRequests(requests.current);
+      setRequest(requests.current);
       setLimitDay(requests.limit_day);
     } catch (error) {
       console.error('Erro ao atualizar status:', error);

@@ -62,7 +62,7 @@ export const TableCell = ({ teams, league, season }: TableCellProps) => {
           <td>{team.team.founded || '-'}</td>
           <td className="teams-country">{team.team.country || '-'}</td>
           <td>{leagueName?.league.name || '-'}</td>
-          <td className="teams-season">{season !== null ? season : '-'}</td>
+          <td className="teams-season">{season ?? '-'}</td>
           <td className="teams-info">
             <Button
               type="button"

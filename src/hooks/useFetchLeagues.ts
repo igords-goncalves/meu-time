@@ -24,7 +24,6 @@ export const useFetchLeagues = () => {
 
       setLeagues(response);
       setOriginalLeagues(response);
-      return;
     }
 
     featchLeagues();
