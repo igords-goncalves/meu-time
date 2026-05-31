@@ -20,5 +20,11 @@ jobs:
       - name: Build
         run: yarn run build
 
-      - name: Run E2E Tests
-        run: yarn run cypress:headless
+      - name: Start Server
+        run:
+
+      - name: Run Server and Run Tests
+        run: |
+          yarn preview --host 0.0.0.0 --port 5173 &
+          sleep 5
+          yarn run cypress:headless
