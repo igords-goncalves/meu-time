@@ -9,7 +9,13 @@ type PropsButton = {
 
 export const Button = ({ onClick, style, children, type }: PropsButton) => {
   return (
-    <button className="c-button" type={type} onClick={onClick} style={style}>
+    <button
+      className="c-button"
+      type={type}
+      onClick={onClick}
+      style={style}
+      data-testid="cy-button"
+    >
       {children}
     </button>
   );
