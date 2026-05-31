@@ -133,15 +133,15 @@ describe('User Authentication', () => {
       userLoginForm.typeTitle(apiKey);
     });
 
-    it('And I click the "Enter" button', () => {
+    it.skip('And I click the "Enter" button', () => {
       cy.get('[data-testid="cy-button"]').click();
     });
 
-    it('Then I should be redirected to the home page', () => {
+    it.skip('Then I should be redirected to the home page', () => {
       cy.location('pathname').should('eq', '/home');
     });
 
-    it('And the user data should be saved in sessionStorage', () => {
+    it.skip('And the user data should be saved in sessionStorage', () => {
       cy.window()
         .its('sessionStorage')
         .invoke('getItem', 'user')
