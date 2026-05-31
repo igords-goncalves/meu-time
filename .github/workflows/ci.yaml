@@ -24,9 +24,6 @@ jobs:
         run: |
           echo '{"api_key":"${{ secrets.CYPRESS_API_KEY }}"}' > cypress.env.json
 
-      - name: Start Server
-        run:
-
       - name: Run Server and Run Tests
         run: |
           yarn preview --host 0.0.0.0 --port 5173 &
