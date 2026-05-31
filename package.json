@@ -1,17 +1,20 @@
 {
   "name": "meu_time",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
+  "engines": {
+    "node": "22.0.0"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "prepare": "husky",
-    "cypress:open": "cypres open",
-    "cy:open-unit": "cypress open --component",
-    "cy:run-unit": "cypress run --component"
+    "cypress:web": "npx cypress open",
+    "cypress:headless": "npx cypress run --headless",
+    "cy:run": "npx cypress run"
   },
   "dependencies": {
     "@types/react-slick": "^0.23.13",

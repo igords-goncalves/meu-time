@@ -14,11 +14,11 @@ jobs:
           node-version: 20.x
           cache: yarn
 
-      - name: Install dependencies
+      - name: Install Dependencies
         run: rm -rf node_modules && yarn install --frozen-lockfile
 
-      - name: Build and test
+      - name: Build
         run: yarn run build
 
-      # - name: Run tests
-      #   run: yarn test
+      - name: Run E2E Tests
+        run: yarn run cypress:headless
