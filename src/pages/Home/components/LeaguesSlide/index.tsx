@@ -17,7 +17,7 @@ export const LeaguesSlide = () => {
 
   const { leagues, originalLeagues, setLeagues } = useFetchLeagues();
 
-  // TODO: Tornar toda essa lógica de pesquisa reutilizável para outros componentes.
+  // Tornar toda essa lógica de pesquisa reutilizável para outros componentes.
   const normalizeString = (str: string) => {
     return str
       .toLowerCase()

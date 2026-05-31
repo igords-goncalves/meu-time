@@ -121,7 +121,7 @@ describe('User Authentication', () => {
     });
   });
 
-  // TODO: Mock da chamada da API, não depender da API real
+  // Mock da chamada da API, não depender da API real
   describe('User logs in with a valid key', () => {
     it('Given that I am on the login page', () => {
       cy.visit('/');
