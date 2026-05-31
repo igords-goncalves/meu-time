@@ -22,7 +22,7 @@ jobs:
 
       - name: Create Cypress env file
         env:
-          CYPRESS_APY_KEY: ${{ secrets.CYPRESS_API_KEY }}
+          CYPRESS_API_KEY: ${{ secrets.CYPRESS_API_KEY }}
         run: |
           echo "{\"api_key\":\"$CYPRESS_API_KEY\"}" > cypress.env.json
 
