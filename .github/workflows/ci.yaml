@@ -21,8 +21,10 @@ jobs:
         run: yarn run build
 
       - name: Create Cypress env file
+        env:
+          CYPRESS_APY_KEY: ${{ secrets.CYPRESS_API_KEY }}
         run: |
-          echo '{"api_key":"${{ secrets.CYPRESS_API_KEY }}"}' > cypress.env.json
+          echo "{\"api_key\":\"$CYPRESS_API_KEY\"}" > cypress.env.json
 
       - name: Run Server and Run Tests
         run: |
