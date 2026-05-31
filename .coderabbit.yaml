@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+# see more in https://docs.coderabbit.ai/reference/configuration#param-high-level-summary-instructions
+
+language: 'pr-BR'
+# tone_instructions: "You are a fullstack software engineer that follow good practices"
+reviews:
+  profile: 'chill'
+  request_changes_workflow: true
+  high_level_sumary: true
+  high_level_summary_instructions: 'When generating or updating a pull request description, use .github/pull_request_template.md as the source of truth. Complete all relevant template sections, update the review checklist accordingly, and provide a concise but informative summary describing the purpose of the change, the main implementation details, and the expected impact of the pull request.'
