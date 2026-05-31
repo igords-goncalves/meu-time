@@ -54,7 +54,7 @@
     visibility: hidden;
     transform: translateY(-10px);
     transition: all 0.2s ease-in-out;
-    min-width: fit-content;
+    min-width: 300px;
     padding: 0.8rem 1rem;
     list-style: none;
     z-index: 9999;
@@ -83,10 +83,15 @@
         border-radius: 12px;
         font-size: 0.6rem;
       }
+
+      &-requests {
+        display: flex;
+        gap: 3px;
+      }
     }
     ul {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       justify-content: space-around;
       gap: 8px;
       padding: 0 0.8rem;

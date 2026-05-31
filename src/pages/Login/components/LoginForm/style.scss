@@ -44,10 +44,20 @@
   width: 100%;
   padding: 12px 36px 12px 8px;
   font-size: 1rem;
-
+  outline: none;
   &::placeholder {
     color: #bebebe;
     font-size: 0.8rem;
+  }
+
+  &:hover {
+    background-color: #f0f0f0;
+    transition: 0.2s ease;
+  }
+
+  &:focus {
+    border: 1px solid #739fff;
+    transition: 0.2s ease;
   }
 }
 

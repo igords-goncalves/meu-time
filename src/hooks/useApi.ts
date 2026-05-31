@@ -12,6 +12,11 @@ export const useApi = () => {
       return res.data;
     },
 
+    updateRequests: async () => {
+      const res = await axiosInstances().api.get('/status');
+      return res.data.response.requests;
+    },
+
     getCountries: async () => {
       const res = await axiosInstances().api.get('/countries');
       return res.data;
