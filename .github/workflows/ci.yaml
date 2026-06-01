@@ -25,7 +25,9 @@ jobs:
           CYPRESS_API_KEY: ${{ secrets.CYPRESS_API_KEY }}
           CYPRESS_API_URL: ${{ secrets.CYPRESS_API_URL }}
         run: |
-          echo "{\"api_key\":\"$CYPRESS_API_KEY\", \"api_url\":\"$CYPRESS_API_URL\"}" > cypress.env.json
+          cat > cypress.env.json << EOF
+          {"api_key":"$CYPRESS_API_KEY","api_url":"$CYPRESS_API_URL"}
+          EOF
 
       - name: Run Server and Run Tests
         run: |
