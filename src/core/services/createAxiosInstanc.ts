@@ -6,7 +6,7 @@ interface CustomAxiosInstance {
 
 export const createAxiosInstance = (apiKey?: string): CustomAxiosInstance => {
   const dataInstance = axios.create({
-    baseURL: 'https://v3.football.api-sports.io',
+    baseURL: import.meta.env.VITE_FOOTBALL_API_URL,
     headers: {
       'x-apisports-key': apiKey,
     },
