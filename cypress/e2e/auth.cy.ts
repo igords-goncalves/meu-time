@@ -121,27 +121,36 @@ describe('User Authentication', () => {
     });
   });
 
-  // Mock da chamada da API, não depender da API real
   describe('User logs in with a valid key', () => {
+    // Boa prática
+    beforeEach(() => {
+      cy.intercept('GET', `${Cypress.env('api_url')}/**`, {
+        fixture: 'user-stub.json',
+      }).as('getStatus');
+    });
+
     it('Given that I am on the login page', () => {
       cy.visit('/');
     });
 
     it('When I enter a valid API key', () => {
-      const apiKey = Cypress.env('api_key');
+      const apiKey = 'fake-valid-api-key';
       expect(apiKey, 'Cypress env api_key').to.be.a('string').and.not.be.empty;
       userLoginForm.typeTitle(apiKey);
     });
 
-    it.skip('And I click the "Enter" button', () => {
+    it('And I click the "Enter" button', () => {
       cy.get('[data-testid="cy-button"]').click();
+      cy.wait('@getStatus')
+        .its('response.body')
+        .should('have.property', 'response');
     });
 
-    it.skip('Then I should be redirected to the home page', () => {
+    it('Then I should be redirected to the home page', () => {
       cy.location('pathname').should('eq', '/home');
     });
 
-    it.skip('And the user data should be saved in sessionStorage', () => {
+    it('And the user data should be saved in sessionStorage', () => {
       cy.window()
         .its('sessionStorage')
         .invoke('getItem', 'user')
