@@ -135,7 +135,7 @@ describe('User Authentication', () => {
 
     it('When I enter a valid API key', () => {
       const apiKey = 'fake-valid-api-key';
-      expect(apiKey, 'Cypress env api_key').to.be.a('string').and.not.be.empty;
+      expect(apiKey, 'Api key').to.be.a('string').and.not.be.empty;
       userLoginForm.typeTitle(apiKey);
     });
 
