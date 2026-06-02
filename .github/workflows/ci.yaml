@@ -24,7 +24,7 @@ jobs:
         env:
           CYPRESS_API_URL: ${{ secrets.CYPRESS_API_URL }}
         run: |
-          echo "{\"api_url\":\"$CYPRESS_API_URL\"}" > cypress.env.json
+          run: printf '{"api_url":"%s"}' "$CYPRESS_API_URL" > cypress.env.json
 
       - name: Run Server and Run Tests
         run: |
