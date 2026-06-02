@@ -124,7 +124,7 @@ describe('User Authentication', () => {
   describe('User logs in with a valid key', () => {
     // Boa prática
     beforeEach(() => {
-      cy.intercept('GET', '**/api-sports.io/**', {
+      cy.intercept('GET', `https://v3.football.api-sports.io/**`, {
         fixture: 'user-stub.json',
       }).as('getStatus');
     });
@@ -135,7 +135,7 @@ describe('User Authentication', () => {
 
     it('When I enter a valid API key', () => {
       const apiKey = 'fake-valid-api-key';
-      expect(apiKey, 'Api key').to.be.a('string').and.not.be.empty;
+      expect(apiKey, 'Cypress env api_key').to.be.a('string').and.not.be.empty;
       userLoginForm.typeTitle(apiKey);
     });
 
