@@ -20,11 +20,6 @@ jobs:
       - name: Build
         run: yarn run build
 
-      - name: Create Cypress env file
-        env:
-          CYPRESS_API_URL: ${{ secrets.CYPRESS_API_URL }}
-        run: printf '{"api_url":"%s"}' "$CYPRESS_API_URL" > cypress.env.json
-
       - name: Run Server and Run Tests
         run: |
           yarn preview --host 0.0.0.0 --port 5173 &

@@ -124,7 +124,7 @@ describe('User Authentication', () => {
   describe('User logs in with a valid key', () => {
     // Boa prática
     beforeEach(() => {
-      cy.intercept('GET', `${Cypress.env('api_url')}/**`, {
+      cy.intercept('GET', '**/api-sports.io/**', {
         fixture: 'user-stub.json',
       }).as('getStatus');
     });
