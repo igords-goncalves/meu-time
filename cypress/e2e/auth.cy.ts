@@ -1,7 +1,7 @@
 import { userLoginForm } from './utils/UserLoginForm';
 
 describe('User Authentication', () => {
-  describe.skip('User sees the login page correctly', () => {
+  describe('User sees the login page correctly', () => {
     it('Given that I am on the login page', () => {
       cy.visit('/');
     });
@@ -34,7 +34,7 @@ describe('User Authentication', () => {
     });
   });
 
-  describe.skip('User attempts login with an invalid key', () => {
+  describe('User attempts login with an invalid key', () => {
     it('Given that I am on the login page', () => {
       cy.visit('/');
     });
@@ -89,7 +89,7 @@ describe('User Authentication', () => {
     });
   });
 
-  describe.skip('User toggles API key visibility', () => {
+  describe('User toggles API key visibility', () => {
     it('Given that I am on the login page', () => {
       cy.visit('/');
     });
