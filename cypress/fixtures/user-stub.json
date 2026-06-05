@@ -1,0 +1,22 @@
+{
+  "get": "status",
+  "parameters": [],
+  "errors": [],
+  "results": 1,
+  "response": {
+    "account": {
+      "firstname": "User",
+      "lastname": "Stub",
+      "email": "userstub@example.com"
+    },
+    "subscription": {
+      "plan": "Free",
+      "end": "2020-04-10T23:24:27+00:00",
+      "active": true
+    },
+    "requests": {
+      "current": 12,
+      "limit_day": 100
+    }
+  }
+}

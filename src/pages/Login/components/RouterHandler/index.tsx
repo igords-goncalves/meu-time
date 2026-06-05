@@ -4,8 +4,7 @@ import { Login } from '../..';
 import { ROUTES } from '../../../../constants/routes';
 import { useAuthContext } from '../../../../hooks/useAuthContext';
 import { privateRoute } from '../../../../router/privateRoute';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { MainRoute as Route } from '../../../../router/routes';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { Grid } from '../../../../components/__layout__/Grid';
 
 export const RouteHandler = () => {
@@ -30,11 +29,15 @@ export const RouteHandler = () => {
   return (
     <Router>
       <Grid>
-        {ROUTES.map(route => (
-          <Route key={route.path} path={route.path}>
-            {isAuthenticated ? <route.component /> : <Login />}
-          </Route>
-        ))}
+        <Routes>
+          {ROUTES.map(route => (
+            <Route
+              key={route.path}
+              path={route.path}
+              element={isAuthenticated ? <route.component /> : <Login />}
+            />
+          ))}
+        </Routes>
       </Grid>
       <ToastContainer />
     </Router>
