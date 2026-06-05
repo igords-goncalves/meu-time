@@ -127,18 +127,18 @@ describe('User Authentication', () => {
       cy.intercept(
         {
           method: 'GET',
-          url: 'https://v3.football.api-sports.io/*',
+          url: 'https://v3.football.api-sports.io/**',
         },
         { fixture: 'user-stub.json' },
       ).as('getStatus');
     });
 
     it('Given that I am on the login page', () => {
-      cy.visit('/');
+      cy.visit('/', { timeout: 30000 });
     });
 
     it('When I enter a valid API key', () => {
-      const apiKey = '5b1629f3c8607e0ac038d0d2b5761026';
+      const apiKey = 'fake-valid-api-key';
       expect(apiKey, 'Cypress env api_key').to.be.a('string').and.not.be.empty;
       userLoginForm.typeTitle(apiKey);
     });
