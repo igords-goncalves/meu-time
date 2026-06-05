@@ -127,7 +127,7 @@ describe('User Authentication', () => {
       cy.intercept(
         {
           method: 'GET',
-          url: 'https://v3.football.api-sports.io/**',
+          url: '/status*',
         },
         { fixture: 'user-stub.json' },
       ).as('getStatus');
